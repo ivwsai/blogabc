@@ -16,7 +16,7 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/ejb3-persistence.jar" sourcepath="D:/rvblog_/hibernate-annotations-3.4.0.GA/lib/ejb3-persistence.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-annotations.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-core.jar" sourcepath="C:/Documents and Settings/luh/Desktop/hibernate-annotations-3.4.0.GA/src"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-api.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-5.1.5-bin.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
