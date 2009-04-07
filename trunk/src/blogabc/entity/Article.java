@@ -87,7 +87,6 @@ public class Article implements Serializable{
 	}
 	
 	@ManyToOne()
-	@JoinColumn(name = "User", referencedColumnName = "id")
 	public User getUser() {
 		return user;
 	}
