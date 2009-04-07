@@ -8,6 +8,7 @@
  */
 package blogabc.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import blogabc.tool.HibernateUtil;
@@ -18,5 +19,19 @@ public class BaseDAO {
 	protected Session getSession() {
 		session = HibernateUtil.getSession();
 		return session;
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected Object find(Class clazz,Long id) {
+		try {
+			session = getSession();
+			Object result = session.load(clazz, id);
+			Object object =result;
+			Hibernate.initialize(object);
+			session.close();
+			return object;
+		} catch (org.hibernate.ObjectNotFoundException e) {
+			return null;
+		}
 	}
 }

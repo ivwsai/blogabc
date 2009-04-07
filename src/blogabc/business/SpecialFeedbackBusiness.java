@@ -11,8 +11,8 @@ package blogabc.business;
 import java.util.ArrayList;
 
 import blogabc.dao.SpecialFeedbackDAO;
-import blogabc.entity.Article;
 import blogabc.entity.SpecialFeedback;
+import blogabc.entity.SpecialTalk;
 
 public class SpecialFeedbackBusiness {
 	private SpecialFeedbackDAO specialFeedbackDao;
@@ -37,7 +37,7 @@ public class SpecialFeedbackBusiness {
 	 * @param article
 	 * @return
 	 */
-	public ArrayList<SpecialFeedback> getArticleSpecialFeedback(Article article){
-		return getSpecialFeedbackDao().findSpecialFeedbacks(article);
+	public ArrayList<SpecialFeedback> getArticleSpecialFeedback(SpecialTalk specialTalk){
+		return getSpecialFeedbackDao().findSpecialFeedbacks(specialTalk);
 	}
 }

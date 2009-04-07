@@ -29,6 +29,10 @@ public class ArticleDAO  extends BaseDAO{
 		}
 	}
 	
+	public Article find(Long id) {
+		return (Article)find(Article.class,id);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public ArrayList<Article> getUserArticles(User user){
 		String hql = "select collect from Collect collect where collect.user= :user";

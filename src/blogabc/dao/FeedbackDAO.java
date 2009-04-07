@@ -39,5 +39,8 @@ public class FeedbackDAO extends BaseDAO {
 		session.close();
 		return list;
 	}
-
+	
+	public Feedback find(Long id) {
+		return (Feedback)find(Feedback.class,id);
+	}
 }

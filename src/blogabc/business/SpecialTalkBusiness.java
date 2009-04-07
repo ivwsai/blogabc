@@ -29,8 +29,8 @@ private SpecialTalkDAO SpecialTalkDao;
 	 * 获取专题列表
 	 * @return
 	 */
-	public ArrayList<SpecialTalk> getUserSpecialTalks(){
-		return getSpecialTalkDao().getUserSpecialTalks(); 
+	public ArrayList<SpecialTalk> getSpecialTalks(){
+		return getSpecialTalkDao().getSpecialTalks(); 
 	}
 	
 	

@@ -9,7 +9,6 @@
 package blogabc.business;
 
 import java.util.ArrayList;
-
 import blogabc.dao.ArticleDAO;
 import blogabc.entity.Article;
 import blogabc.entity.User;
@@ -36,6 +35,14 @@ public class ArticleBusiness {
 		return getArticleDao().getUserArticles(user); 
 	}
 	
+	/**
+	 * 获取博文
+	 * @param id 博文id
+	 * @return 博文信息类
+	 */
+	public Article getArticle(Long id){
+		return getArticleDao().find(id);
+	}
 	
 	/**
 	 * 发布博文
