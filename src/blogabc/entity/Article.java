@@ -13,7 +13,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 /**
- * ≤©Œƒ–≈œ¢¿‡
+ * BLOG info class
  * @author luh
  *
  */
@@ -30,10 +30,16 @@ public class Article implements Serializable{
 	private Date createTime;
 	private Date updateTime;
 	/*
-	 * ∂•°¢≤»
+	 * * È°∂  Ë∏©
 	 */
 	private int up=0;
 	private int down=0;
+	
+	public Article(){}
+	
+	public Article(User user) {
+		this.user=user;
+	}
 	
 	public int getUp() {
 		return up;

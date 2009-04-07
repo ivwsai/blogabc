@@ -1,0 +1,2 @@
+关于MySql5的“data too long for column”错误 
+从MySql5中运行本地脚本创建数据库，当插入中文字段时发生“data too long for column”错误。上网一查，发现多字节用户大都碰到了这种情况。google搜索网上的解决方法大都是要将数据库的编码方式为GBK或UTF8，可我在安装MySql时就选择了UTF8格式。原来错误原因是本地的脚本文件不是UTF8编码的，用记事本或UltraEdit将编码转为UTF8后问题解决。再次强调，JSP页面，数据库联接接方式，数据库创建，…，都须一致使用UTF8编码！

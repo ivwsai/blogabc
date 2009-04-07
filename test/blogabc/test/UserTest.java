@@ -25,7 +25,7 @@ public class UserTest extends TestCase {
 		user = userDAO.find(id);
 		assertNotNull(user);
 
-		user = userDAO.get("eric122", "blogabc");
+		user = userDAO.get("eric1110", "blogabc");
 		assertNotNull(user.getName());
 		assertNotNull(user.getPassword());
 	}
@@ -40,7 +40,7 @@ public class UserTest extends TestCase {
 
 		user = ub.getUser(userId);
 		assertNotNull(user);
-		user = ub.login("eric", "blogabc");
+		user = ub.login("eric1111", "blogabc");
 		assertNotNull(user.getName());
 		assertNotNull(user.getPassword());
 	}
