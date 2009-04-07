@@ -8,6 +8,7 @@
  */
 package blogabc.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.hibernate.Query;
@@ -30,19 +31,35 @@ public class SpecialTalkDAO extends BaseDAO {
 		return (SpecialTalk)find(SpecialTalk.class,id);
 	}
 	
-	public Long add(SpecialTalk specialTalk) {
-		// TODO Auto-generated method stub
-		return null;
+	public Serializable add(SpecialTalk specialTalk) {
+		try {
+			session = getSession();
+			Serializable specialTalkId = session.save(specialTalk);
+			session.close();
+			return specialTalkId;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	public boolean update(SpecialTalk specialTalk) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			session = getSession();
+			session.update(specialTalk);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean delete(SpecialTalk specialTalk) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			session = getSession();
+			session.delete(specialTalk);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	
