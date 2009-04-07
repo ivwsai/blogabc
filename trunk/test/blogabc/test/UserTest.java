@@ -18,14 +18,14 @@ import blogabc.entity.User;
 public class UserTest extends TestCase {
 	public static void testDAO(){
 		UserDAO userDAO = new UserDAO();
-		User user = new User("eric1", "blogabc");
+		User user = new User("eric1110", "blogabc");
 
 		Long id = (Long) userDAO.add(user);
 
 		user = userDAO.find(id);
 		assertNotNull(user);
 
-		user = userDAO.get("eric1", "blogabc");
+		user = userDAO.get("eric122", "blogabc");
 		assertNotNull(user.getName());
 		assertNotNull(user.getPassword());
 	}
@@ -33,7 +33,7 @@ public class UserTest extends TestCase {
 	public static void testRegister(){
 		UserDAO userDAO = new UserDAO();
 
-		User user = new User("eric", "blogabc");
+		User user = new User("eric1111", "blogabc");
 		UserBusiness ub = new UserBusiness(userDAO);
 
 		Long userId = ub.register(user);

@@ -10,15 +10,26 @@ package blogabc.dao;
 
 import java.util.ArrayList;
 
+import org.hibernate.Query;
+
 import blogabc.entity.SpecialTalk;
 
 public class SpecialTalkDAO extends BaseDAO {
 
-	public ArrayList<SpecialTalk> getUserSpecialTalks() {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("unchecked")
+	public ArrayList<SpecialTalk> getSpecialTalks() {
+		String hql = "select specialTalk from SpecialTalk specialTalk";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		ArrayList<SpecialTalk> list = (ArrayList<SpecialTalk>) q.list();
+		session.close();
+		return list;
 	}
 
+	public SpecialTalk find(Long id) {
+		return (SpecialTalk)find(SpecialTalk.class,id);
+	}
+	
 	public Long add(SpecialTalk specialTalk) {
 		// TODO Auto-generated method stub
 		return null;

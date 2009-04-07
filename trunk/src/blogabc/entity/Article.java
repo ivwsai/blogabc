@@ -12,6 +12,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * 博文信息类
+ * @author luh
+ *
+ */
 @SuppressWarnings("serial")
 @Entity
 public class Article implements Serializable{

@@ -10,7 +10,9 @@ package blogabc.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import org.hibernate.Query;
+
 import blogabc.entity.Collect;
 import blogabc.entity.User;
 
@@ -37,6 +39,10 @@ public class CollectionDAO extends BaseDAO {
 		return list;
 	}
 
+	public Collect find(Long id) {
+		return (Collect)find(Collect.class,id);
+	}
+	
 	public boolean update(Collect collect) {
 		try {
 			session = getSession();

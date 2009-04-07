@@ -39,8 +39,17 @@ public class NewsDAO extends BaseDAO {
 	}
 
 	public boolean update(News news) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			session = getSession();
+			session.update(news);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public News find(Long id) {
+		return (News)find(News.class,id);
 	}
 
 }
