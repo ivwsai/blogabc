@@ -27,7 +27,7 @@ public class ArticleBusiness {
 	}
 	
 	/**
-	 * 获取用户博客列表
+	 * 
 	 * @param user
 	 * @return
 	 */
@@ -36,16 +36,16 @@ public class ArticleBusiness {
 	}
 	
 	/**
-	 * 获取博文
-	 * @param id 博文id
-	 * @return 博文信息类
+	 * 
+	 * @param id
+	 * @return
 	 */
 	public Article getArticle(Long id){
 		return getArticleDao().find(id);
 	}
 	
 	/**
-	 * 发布博文
+	 * 
 	 * @param article
 	 * @return
 	 * @throws BlogABCException 
@@ -59,7 +59,7 @@ public class ArticleBusiness {
 	}
 	
 	/**
-	 * 修改博文
+	 * 
 	 * @param article
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class ArticleBusiness {
 	}
 	
 	/**
-	 * 删除博文
+	 * 
 	 * @param article
 	 * @return
 	 */
