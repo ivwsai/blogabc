@@ -38,7 +38,18 @@ public class User implements Serializable{
 	private String lastName;
 	private String phone;
 	private String email;
-	
+		
+	/*
+	 * 用户头像照片地址
+	 */
+	private String photoUrl;	
+	/*
+	 * 用户自我描述
+	 */
+	private String description;
+	private Date createTime;
+	private Date updateTime;
+
 	//没有默认构造子，报错：Javassist Enhancement failed: blogabc.entity.User
 	public User(){}
 	
@@ -68,18 +79,7 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	/*
-	 * 用户头像照片地址
-	 */
-	private String photoUrl;	
-	/*
-	 * 用户自我描述
-	 */
-	private String description;
-	private Date createTime;
-	private Date updateTime;
-
+	
 	public Date getCreateTime() {
 		return createTime;
 	}
