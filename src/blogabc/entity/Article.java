@@ -24,11 +24,12 @@ public class Article implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
 	private String title;
-	private String content;
-	private User user;
+	private String content;	
 	private Classify classify;
 	private Date createTime;
 	private Date updateTime;
+	private User user;
+	
 	/*
 	 * * 顶  踩
 	 */
@@ -86,7 +87,8 @@ public class Article implements Serializable{
 		this.content = content;
 	}
 	
-	@ManyToOne()
+	@ManyToOne
+//	@JoinColumn(name = "user", referencedColumnName = "user_id")
 	public User getUser() {
 		return user;
 	}
@@ -94,8 +96,8 @@ public class Article implements Serializable{
 		this.user = user;
 	}
 
-	@ManyToOne()
-	@JoinColumn(name = "Classify", referencedColumnName = "id")
+	@ManyToOne
+//	@JoinColumn(name = "classify", referencedColumnName = "classify_id")
 	public Classify getClassify() {
 		return classify;
 	}

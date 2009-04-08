@@ -17,7 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * ÓÃ»§ĞÅÏ¢Àà
+ * ç”¨æˆ·ä¿¡æ¯ç±»
  * @author luh
  *
  */
@@ -31,7 +31,7 @@ public class User implements Serializable{
 	private String name;
 	private String password;
 	/*
-	 * ÓÃ»§»ı·Ö
+	 * ç”¨æˆ·ç§¯åˆ†
 	 */
 	private int point;	
 	private String firstName;
@@ -39,7 +39,7 @@ public class User implements Serializable{
 	private String phone;
 	private String email;
 	
-	//Ã»ÓĞÄ¬ÈÏ¹¹Ôì×Ó£¬±¨´í£ºJavassist Enhancement failed: blogabc.entity.User
+	//æ²¡æœ‰é»˜è®¤æ„é€ å­ï¼ŒæŠ¥é”™ï¼šJavassist Enhancement failed: blogabc.entity.User
 	public User(){}
 	
 	public User(String userId, String password) {
@@ -70,11 +70,11 @@ public class User implements Serializable{
 	}
 
 	/*
-	 * ÓÃ»§Í·ÏñÕÕÆ¬µØÖ·
+	 * ç”¨æˆ·å¤´åƒç…§ç‰‡åœ°å€
 	 */
 	private String photoUrl;	
 	/*
-	 * ÓÃ»§×ÔÎÒÃèÊö
+	 * ç”¨æˆ·è‡ªæˆ‘æè¿°
 	 */
 	private String description;
 	private Date createTime;
