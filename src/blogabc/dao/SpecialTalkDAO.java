@@ -46,6 +46,7 @@ public class SpecialTalkDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.update(specialTalk);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -56,6 +57,7 @@ public class SpecialTalkDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.delete(specialTalk);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;

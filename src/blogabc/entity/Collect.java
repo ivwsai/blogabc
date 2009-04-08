@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -25,7 +23,10 @@ public class Collect implements Serializable{
 	private Long id;
 	private String name;
 	private String url;
-	private User user;
+	
+	private Long userId;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,13 +45,11 @@ public class Collect implements Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	@ManyToOne()
-	@JoinColumn(name = "User", referencedColumnName = "id")
-	public User getUser() {
-		return user;
+
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }

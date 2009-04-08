@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 
 @SuppressWarnings("serial")
@@ -25,9 +23,10 @@ public class News implements Serializable{
 	private Long id;
 	private String title;
 	private String content;
-	private User user;
 	private Date createTime;
 	private Date updateTime;
+	
+	private Long userId;
 	
 	public Long getId() {
 		return id;
@@ -47,15 +46,7 @@ public class News implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	@ManyToOne()
-	@JoinColumn(name = "User", referencedColumnName = "id")
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -67,5 +58,11 @@ public class News implements Serializable{
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import org.hibernate.Query;
 
 import blogabc.entity.Article;
-import blogabc.entity.User;
 
 public class ArticleDAO  extends BaseDAO{
 
@@ -34,11 +33,11 @@ public class ArticleDAO  extends BaseDAO{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public ArrayList<Article> getUserArticles(User user){
-		String hql = "select collect from Collect collect where collect.user= :user";
+	public ArrayList<Article> getUserArticles(Long userId){
+		String hql = "select article from Article article where article.userId= :userId";
 		session = getSession();
 		Query q = session.createQuery(hql);
-		q.setParameter("user", user);
+		q.setParameter("userId", userId);
 		ArrayList<Article> list = (ArrayList<Article>) q.list();
 		session.close();
 		return list;
@@ -48,6 +47,7 @@ public class ArticleDAO  extends BaseDAO{
 		try {
 			session = getSession();
 			session.update(article);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -58,6 +58,7 @@ public class ArticleDAO  extends BaseDAO{
 		try {
 			session = getSession();
 			session.delete(article);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;

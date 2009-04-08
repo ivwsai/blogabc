@@ -26,19 +26,21 @@ public class ArticleTest extends TestCase {
 	public void testUserArticles() throws BlogABCException {
 		UserDAO userDAO = new UserDAO();
 		User user = new User("eric1110", "blogabc");
-		userDAO.add(user);
+		Long userId=(Long)userDAO.add(user);
 
 		articleDao = new ArticleDAO();
 		ab = new ArticleBusiness();
 		ab.setAriticleDao(articleDao);
 
 		for (int j = 0; j < 10; j++) {
-			Article article = new Article(user);
+			Article article = new Article(userId);
 			article.setTitle("" + j);
 			ab.publishArticle(article);
 		}
 
-		ArrayList<Article> list=ab.getUserArticles(user);
+		ArrayList<Article> list=ab.getUserArticles(userId);
+		
+		assertNotNull(list);
 		
 		for (int j = 0; j < list.size(); j++) {
 			Article article = list.get(j);
