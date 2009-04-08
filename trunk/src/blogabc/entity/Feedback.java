@@ -25,8 +25,15 @@ public class Feedback implements Serializable{
 	private Long id;
 	private String content;
 	private Article article;
-	private User user;
 	
+	private Long userId;
+	
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -47,14 +54,5 @@ public class Feedback implements Serializable{
 	}
 	public void setArticle(Article article) {
 		this.article = article;
-	}
-	
-	@ManyToOne()
-	@JoinColumn(name = "User", referencedColumnName = "id")
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
 	}
 }

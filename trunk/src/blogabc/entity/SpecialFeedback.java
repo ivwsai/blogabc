@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -24,8 +22,9 @@ public class SpecialFeedback implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
 	private String content;
-	private User user;
-	private SpecialTalk specialTalk;
+	
+	private Long userId;
+	private Long specialTalkId;
 	
 	public Long getId() {
 		return id;
@@ -39,22 +38,17 @@ public class SpecialFeedback implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	@ManyToOne()
-	@JoinColumn(name = "User", referencedColumnName = "id")
-	public User getUser() {
-		return user;
+
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
-	
-	@ManyToOne()
-	@JoinColumn(name = "SpecialTalk", referencedColumnName = "id")
-	public SpecialTalk getSpecialTalk() {
-		return specialTalk;
+	public Long getSpecialTalkId() {
+		return specialTalkId;
 	}
-	public void setSpecialTalk(SpecialTalk specialTalk) {
-		this.specialTalk = specialTalk;
+	public void setSpecialTalkId(Long specialTalkId) {
+		this.specialTalkId = specialTalkId;
 	}
 }

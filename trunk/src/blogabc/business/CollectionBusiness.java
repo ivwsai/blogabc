@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import blogabc.dao.CollectionDAO;
 import blogabc.entity.Collect;
-import blogabc.entity.User;
 
 public class CollectionBusiness {
 
@@ -27,7 +26,7 @@ public class CollectionBusiness {
 	}
 
 	/**
-	 * Ìí¼ÓÊÕ²Ø
+	 * ï¿½ï¿½ï¿½ï¿½Õ²ï¿½
 	 * @param collect
 	 * @return
 	 */
@@ -36,17 +35,17 @@ public class CollectionBusiness {
 	}
 	
 	/**
-	 * »ñÈ¡ÓÃ»§µÄÊÕ²ØÁÐ±í
+	 * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Õ²ï¿½ï¿½Ð±ï¿½
 	 * @param user
 	 * @return
 	 */
-	public ArrayList<Collect> getUserCollects(User user){
-		return getCollectionDao().findCollects(user);
+	public ArrayList<Collect> getUserCollects(Long userId){
+		return getCollectionDao().findCollects(userId);
 		
 	}
 	
 	/**
-	 * ÐÞ¸ÄÊÕ²Ø
+	 * ï¿½Þ¸ï¿½ï¿½Õ²ï¿½
 	 * @param collect
 	 * @return
 	 */
@@ -55,7 +54,7 @@ public class CollectionBusiness {
 	}
 	
 	/**
-	 * É¾³ýÊÕ²Ø
+	 * É¾ï¿½ï¿½ï¿½Õ²ï¿½
 	 * @param collect
 	 * @return
 	 */

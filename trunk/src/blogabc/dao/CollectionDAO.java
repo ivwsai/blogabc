@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import org.hibernate.Query;
 
 import blogabc.entity.Collect;
-import blogabc.entity.User;
 
 public class CollectionDAO extends BaseDAO {
 	public Serializable add(Collect collect) {
@@ -29,11 +28,11 @@ public class CollectionDAO extends BaseDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Collect> findCollects(User user) {
-		String hql = "select collect from Collect collect where collect.user= :user";
+	public ArrayList<Collect> findCollects(Long userId) {
+		String hql = "select collect from Collect collect where collect.userId= :userId";
 		session = getSession();
 		Query q = session.createQuery(hql);
-		q.setParameter("user", user);
+		q.setParameter("userId", userId);
 		ArrayList<Collect> list = (ArrayList<Collect>) q.list();
 		session.close();
 		return list;
@@ -47,6 +46,7 @@ public class CollectionDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.update(collect);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -57,6 +57,7 @@ public class CollectionDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.delete(collect);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;

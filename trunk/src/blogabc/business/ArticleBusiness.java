@@ -9,9 +9,9 @@
 package blogabc.business;
 
 import java.util.ArrayList;
+
 import blogabc.dao.ArticleDAO;
 import blogabc.entity.Article;
-import blogabc.entity.User;
 import blogabc.home.BlogABCException;
 
 public class ArticleBusiness {
@@ -31,8 +31,8 @@ public class ArticleBusiness {
 	 * @param user
 	 * @return
 	 */
-	public ArrayList<Article> getUserArticles(User user){
-		return getArticleDao().getUserArticles(user); 
+	public ArrayList<Article> getUserArticles(Long userId){
+		return getArticleDao().getUserArticles(userId); 
 	}
 	
 	/**

@@ -31,6 +31,7 @@ public class ClassifyDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.update(classify);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -41,6 +42,7 @@ public class ClassifyDAO extends BaseDAO {
 		try {
 			session = getSession();
 			session.delete(classify);
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
