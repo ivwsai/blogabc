@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import blogabc.entity.User;
 
@@ -21,7 +22,9 @@ public class UserDAO extends BaseDAO {
 	public Serializable add(User user) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			Serializable userId = session.save(user);
+			tran.commit();
 			session.close();
 			return userId;
 		} catch (Exception e) {
@@ -67,6 +70,16 @@ public class UserDAO extends BaseDAO {
 		ArrayList<User> list = (ArrayList<User>) q.list();
 		session.close();
 		return list;
+	}
+
+	public boolean isExist(String userId) {
+		String hql = "select count(user) from User user where user.name = :name";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		q.setString("name", userId);
+		Long count = (Long) q.uniqueResult();
+		session.close();
+		return count != 0;
 	}
 
 }

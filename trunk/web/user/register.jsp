@@ -90,13 +90,35 @@ body  {
 .marsCss1 #mainContent { zoom: 1; }
 /* 上面的专用 zoom 属性为 IE 提供避免错误所需的 hasLayout */
 </style>
-<![endif]--></head>
+<![endif]-->
+
+<script language="javascript" src="../script/prototype.js"></script>
+<script language="javascript" src="../script/buffalo.js"></script>
+<script language="javascript">
+var END_POINT="<%=request.getContextPath()%>/bfapp";
+var buffalo = new Buffalo(END_POINT);
+
+function checkName() {
+	alert("1");
+    var p1 = $("username").value;
+    buffalo.remoteCall("userBusiness.isExist",[p1], function(reply) {
+	boolean isExist=reply.getResult();
+	if(isExist)
+		$("nameResult").value="不可用";
+	else
+       $("nameResult").value="可用";
+    });
+}
+</script>
+
+
+</head>
 
 <body class="marsCss1">
 
 <div id="container">
   <div id="header">
-<h1>rvblog</h1>
+<h1>blogabc</h1>
   <!-- end #header --></div>
   <div id="sidebar1">
 <h3>导航</h3>
@@ -108,10 +130,13 @@ body  {
 <!-- end #sidebar1 --></div>
   <div id="mainContent">
 <h1>新用户注册</h1>
+	<form name="form1" method="post" action="">
     <p>用户名
-      <input type="text" name="textfield" id="textfield">
-      <input class="button" type="submit" name="button" id="button" value="提交">
-    </p>
+      <input type="text" name="username" id="textfield">
+      <input class="button" type="submit" name="button" id="button" value="校验" onclick="checkName()">
+      <input name="nameResult" type="text" id="textfield" size="10">
+    </p>    
+    </form>
     <p>密码设置
       <input type="text" name="textfield2" id="textfield2">
     </p>
@@ -130,12 +155,12 @@ body  {
     <p>头像</p>
     <p>个人描述</p>
     <p>
-      <textarea name="textfield8" cols="80" rows="10" id="textfield8"></textarea>
+      <textarea name="textfield8" cols="55" rows="10" id="textfield8"></textarea>
     </p>
     <p>
       <input class="button" type="submit" name="button2" id="button2" value="提交">
-      <input class="button" type="submit" name="button3" id="button3" value="提交"> 
-      <input class="button" type="submit" name="button4" id="button4" value="提交">
+      <input class="button" type="submit" name="button3" id="button3" value="重置"> 
+      <input class="button" type="submit" name="button4" id="button4" value="取消">
     </p>
     <!-- end #mainContent --></div>
 	<!-- 这个用于清除浮动的元素应当紧跟 #mainContent div 之后，以便强制 #container div 包含所有的子浮动 --><br class="clearfloat" />
