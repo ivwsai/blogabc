@@ -30,11 +30,13 @@ public class UserBusiness {
 	}
 
 	/**
-	 * ×¢²á
 	 * @param user
-	 * @return ÓÃ»§×¢²áid
+	 * @return ï¿½Ã»ï¿½ï¿½ï¿½id
 	 */
 	public Long register(User user) {
+		boolean isExist= isExist(user.getName());
+		if(isExist)
+			return -1l;
 		try {
 			Long userId = (Long) getUserDao().add(user);
 			return userId;
@@ -42,12 +44,17 @@ public class UserBusiness {
 			return -1l;
 		}
 	}
+	
+	public boolean isExist(String username){
+		boolean isExist= getUserDao().isExist(username);
+		return isExist;
+	}
 
 	/**
-	 * µÇÂ¼
-	 * @param userId ÓÃ»§Ãû
-	 * @param password ÃÜÂë
-	 * @return ÓÃ»§ĞÅÏ¢Àà
+	 * ï¿½ï¿½Â¼
+	 * @param userId ï¿½Ã»ï¿½ï¿½ï¿½
+	 * @param password ï¿½ï¿½ï¿½ï¿½
+	 * @return ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public User login(String userId, String password) {
 		User user = getUserDao().get(userId, password);
@@ -55,9 +62,8 @@ public class UserBusiness {
 	}
 
 	/**
-	 * Í¨¹ıÓÃ»§id²éÑ¯ÓÃ»§ĞÅÏ¢
-	 * @param userId ÓÃ»§id
-	 * @return ÓÃ»§ĞÅÏ¢Àà
+	 * @param userId ï¿½Ã»ï¿½id
+	 * @return ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	public User getUser(Long userId){

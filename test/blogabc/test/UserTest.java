@@ -16,20 +16,6 @@ import blogabc.dao.UserDAO;
 import blogabc.entity.User;
 
 public class UserTest extends TestCase {
-	public static void testDAO(){
-		UserDAO userDAO = new UserDAO();
-		User user = new User("eric1110", "blogabc");
-
-		Long id = (Long) userDAO.add(user);
-
-		user = userDAO.find(id);
-		assertNotNull(user);
-
-		user = userDAO.get("eric1110", "blogabc");
-		assertNotNull(user.getName());
-		assertNotNull(user.getPassword());
-	}
-
 	public static void testRegister(){
 		UserDAO userDAO = new UserDAO();
 
