@@ -15,18 +15,21 @@ import blogabc.tool.HibernateUtil;
 
 public class BaseDAO {
 	protected Session session;
+	private HibernateUtil util;
 
 	protected Session getSession() {
-		session = HibernateUtil.getSession();
+		if (util == null)
+			util = new HibernateUtil();
+		session = util.getSession();
 		return session;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	protected Object find(Class clazz,Long id) {
+	protected Object find(Class clazz, Long id) {
 		try {
 			session = getSession();
 			Object result = session.load(clazz, id);
-			Object object =result;
+			Object object = result;
 			Hibernate.initialize(object);
 			session.close();
 			return object;

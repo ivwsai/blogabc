@@ -8,23 +8,28 @@
  */
 package blogabc.tool;
 
-import org.hibernate.*;
-import org.hibernate.cfg.*;
+import java.io.File;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 
 public class HibernateUtil {
-	private static final SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-	static {
+	public HibernateUtil() {
+		File file = new File("Hibernate.cfg.xml");
 		try {
-			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-			throw new ExceptionInInitializerError(ex);
+			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
+		} catch (Exception e) {
+			String usrDir = System.getProperty("user.dir");
+			file = new File(usrDir + "/src/blogabc/tool/Hibernate.cfg.xml");
+			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		}
 	}
 
-	public static Session getSession() throws HibernateException {
+	public Session getSession() throws HibernateException {
 		return sessionFactory.openSession();
 	}
 }

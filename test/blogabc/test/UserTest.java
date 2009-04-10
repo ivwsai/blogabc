@@ -19,14 +19,14 @@ public class UserTest extends TestCase {
 	public static void testRegister(){
 		UserDAO userDAO = new UserDAO();
 
-		User user = new User("eric1111", "blogabc");
+		User user = new User("han", "1");
 		UserBusiness ub = new UserBusiness(userDAO);
 
 		Long userId = ub.register(user);
 
 		user = ub.getUser(userId);
 		assertNotNull(user);
-		user = ub.login("eric1111", "blogabc");
+		user = ub.login("han", "1");
 		assertNotNull(user.getName());
 		assertNotNull(user.getPassword());
 	}
