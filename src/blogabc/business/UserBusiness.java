@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import blogabc.dao.UserDAO;
 import blogabc.entity.User;
+import blogabc.tool.SafeUtility;
 
 public class UserBusiness {
 
@@ -33,13 +34,17 @@ public class UserBusiness {
 
 	/**
 	 * @param user
-	 * @return �û���id
+	 * @return 
 	 */
 	public Long register(User user) {
 		boolean isExist= isExist(user.getName());
 		if(isExist)
 			return -1l;
 		try {
+			String password=user.getPassword();
+			password=SafeUtility.encode(password);
+			user.setPassword(password);
+			
 			Long userId = (Long) getUserDao().add(user);
 			return userId;
 		} catch (Exception e) {
@@ -53,19 +58,19 @@ public class UserBusiness {
 	}
 
 	/**
-	 * ��¼
-	 * @param userId �û���
-	 * @param password ����
-	 * @return �û�����
+	 * @param userId
+	 * @param password 
+	 * @return 
 	 */
 	public User login(String userId, String password) {
+		password=SafeUtility.encode(password);
 		User user = getUserDao().get(userId, password);
 		return user;
 	}
 
 	/**
-	 * @param userId �û�id
-	 * @return �û�����
+	 * @param userId
+	 * @return 
 	 * @throws Exception
 	 */
 	public User getUser(Long userId){

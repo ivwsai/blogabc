@@ -15,16 +15,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import blogabc.BlogabcApplication;
+
 public class HibernateUtil {
 	private SessionFactory sessionFactory;
-
+	
 	public HibernateUtil() {
-		File file = new File("Hibernate.cfg.xml");
+		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
+		File file = new File(rootPath+"/Hibernate.cfg.xml");
 		try {
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		} catch (Exception e) {
 			String usrDir = System.getProperty("user.dir");
-			file = new File(usrDir + "/src/blogabc/tool/Hibernate.cfg.xml");
+			file = new File(usrDir + "/src/Hibernate.cfg.xml");
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		}
 	}
