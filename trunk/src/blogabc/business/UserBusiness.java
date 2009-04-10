@@ -15,6 +15,8 @@ import blogabc.entity.User;
 
 public class UserBusiness {
 
+	public UserBusiness(){}
+	
 	private UserDAO userDao;
 
 	public UserBusiness(UserDAO userDao) {
