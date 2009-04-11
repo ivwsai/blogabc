@@ -82,4 +82,18 @@ public class UserDAO extends BaseDAO {
 		return count != 0;
 	}
 
+	public boolean updatePhoto(Long id, String path) {
+		try {
+			String hql = "update User user set user.photoUrl= :path where user.id = :id";
+			session = getSession();
+			Query q = session.createQuery(hql);
+			q.setString("path", path);
+			q.setLong("id", id);
+			q.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }
