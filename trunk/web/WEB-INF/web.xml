@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.4" 
-	xmlns="http://java.sun.com/xml/ns/j2ee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 
 	<servlet>
 		<servlet-name>bfapp</servlet-name>
-   	 	<servlet-class>net.buffalo.web.servlet.ApplicationServlet</servlet-class>
+		<servlet-class>
+			net.buffalo.web.servlet.ApplicationServlet
+		</servlet-class>
 	</servlet>
 
- 	<session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/mvc-config.xml,/WEB-INF/beans-config.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
-    <servlet>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>
-            org.springframework.web.servlet.DispatcherServlet
-        </servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/mvc-config.xml,/WEB-INF/beans-config.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
-    
 	<servlet-mapping>
-    <servlet-name>bfapp</servlet-name>
-    <url-pattern>/bfapp/*</url-pattern>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>bfapp</servlet-name>
+		<url-pattern>/bfapp/*</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
-	  <welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>

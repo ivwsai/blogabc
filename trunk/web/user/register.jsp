@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>无标题文档</title>
+<title>注册</title>
 <style type="text/css"> 
 <!-- 
 body  {
@@ -94,25 +94,25 @@ body  {
 
 <script language="javascript" src="../script/prototype.js"></script>
 <script language="javascript" src="../script/buffalo.js"></script>
+
 <script language="javascript">
 var END_POINT="<%=request.getContextPath()%>/bfapp";
 var buffalo = new Buffalo(END_POINT);
 
 function checkName() {
-	alert("1");
+	alert();
     var p1 = $("username").value;
-    buffalo.remoteCall("userBusiness.isExist",[p1], function(reply) {
-	boolean isExist=reply.getResult();
-	if(isExist)
-		$("nameResult").value="不可用";
-	else
+    buffalo.remoteCall("userAjax.isExist",[p1], function(reply) {
+	//boolean isExist=(boolean)reply.getResult();
+	//if(isExist)
+		//$("nameResult").value="不可用";
+	//else
        $("nameResult").value="可用";
     });
 }
 </script>
-
-
 </head>
+
 
 <body class="marsCss1">
 
@@ -120,23 +120,15 @@ function checkName() {
   <div id="header">
 <h1>blogabc</h1>
   <!-- end #header --></div>
-  <div id="sidebar1">
-<h3>导航</h3>
-<p>返回首页</p>
-<p>查看专题</p>
-<p>查看热文</p>
-<p>查看新闻</p>
-<p>我的BLOG</p>
-<!-- end #sidebar1 --></div>
+  <%@ include file="/include/left.jsp" %>
   <div id="mainContent">
 <h1>新用户注册</h1>
-	<form name="form1" method="post" action="">
     <p>用户名
       <input type="text" name="username" id="textfield">
-      <input class="button" type="submit" name="button" id="button" value="校验" onclick="checkName()">
-      <input name="nameResult" type="text" id="textfield" size="10">
+      <input class="button" type="button" id="button" value="校验" onClick="checkName()">
+      <input type="button" name="Submit" value="校验" onClick="checkName()">
+      <input class="button" name="nameResult" type="text" id="textfield" size="10">
     </p>    
-    </form>
     <p>密码设置
       <input type="text" name="textfield2" id="textfield2">
     </p>
@@ -159,7 +151,7 @@ function checkName() {
     </p>
     <p>
       <input class="button" type="submit" name="button2" id="button2" value="提交">
-      <input class="button" type="submit" name="button3" id="button3" value="重置"> 
+      <input onClick="checkName1()" class="button" type="submit" name="button3" id="button3" value="重置"> 
       <input class="button" type="submit" name="button4" id="button4" value="取消">
     </p>
     <!-- end #mainContent --></div>
