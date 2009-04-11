@@ -76,7 +76,7 @@ public class UserDAO extends BaseDAO {
 		String hql = "select count(user) from User user where user.name = :name";
 		session = getSession();
 		Query q = session.createQuery(hql);
-		q.setString("name", userId);
+		q.setString("name", userId.trim());
 		Long count = (Long) q.uniqueResult();
 		session.close();
 		return count != 0;
