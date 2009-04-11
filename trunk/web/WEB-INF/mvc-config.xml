@@ -12,7 +12,8 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
         <property name="mappings"> 
             <props> 
-                <prop key="user/login.do">loginController</prop> 
+                <prop key="user/login.do">loginController</prop>
+                <prop key="user/ register.do">loginController</prop>
             </props>
         </property> 
     </bean>

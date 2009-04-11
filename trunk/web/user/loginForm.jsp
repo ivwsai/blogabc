@@ -116,7 +116,7 @@ body  {
     <p>密码&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="password"></p>
     <p>
       <input class="button" type="submit" name="button2" id="button2" value="登录">
-      <input class="button" type="submit" name="button4" id="button4" value="重置">
+      <input class="button" name="button4" id="button4" value="重置">
     </p>
 </form>  
   <!-- end #mainContent --></div>
