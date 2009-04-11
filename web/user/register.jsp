@@ -136,47 +136,43 @@ body {
 		<script language="javascript" src="../script/buffalo.js"></script>
 
 		<script language="javascript">
-var END_POINT="<%=request.getContextPath()%>/bfapp";
-var buffalo = new Buffalo(END_POINT);
-
-function checkName() {	
-    var p1 = $("username").value;
-    if(p1==null||p1.length==0){
-    	alert("用户名不能为空.");
-    	return;
-    }
-    buffalo.remoteCall("userAjax.isExist",[p1], function(reply) {
-    	var isExist=reply.getResult();
-		if(isExist)
-			$("nameResult").value="不可用";
-		else
-       		$("nameResult").value="可用";
-    });
-}
-
-function clean(){
-	$("username").value='';
-	$("password").value='';
-	$("password2").value='';
-	$("lastName").value='';
-	$("firstName").value='';
-	$("mobile").value='';
-	$("email").value='';
-	$("description").value='';
-}
-</script>
+			var END_POINT="<%=request.getContextPath()%>/bfapp";
+			var buffalo = new Buffalo(END_POINT);
+			
+			function checkName() {	
+			    var p1 = $("username").value;
+			    if(p1==null||p1.length==0){
+			    	alert("用户名不能为空.");
+			    	return;
+			    }
+			    buffalo.remoteCall("userAjax.isExist",[p1], function(reply) {
+			    	var isExist=reply.getResult();
+					if(isExist)
+						$("nameResult").value="不可用";
+					else
+			       		$("nameResult").value="可用";
+			    });
+			}
+			
+			function clean(){
+				$("username").value='';
+				$("password").value='';
+				$("password2").value='';
+				$("lastName").value='';
+				$("firstName").value='';
+				$("mobile").value='';
+				$("email").value='';
+				$("fileContents").value='';	
+				$("description").value='';
+			}
+		</script>
 	</head>
 
 
 	<body class="marsCss1">
 
 		<div id="container">
-			<div id="header">
-				<h1>
-					blogabc
-				</h1>
-				<!-- end #header -->
-			</div>
+			<%@ include file="/include/head.jsp"%>
 			<%@ include file="/include/left.jsp"%>
 			<div id="mainContent">
 				<h1>
@@ -185,7 +181,7 @@ function clean(){
 				<p>
 					&nbsp;
 				</p>
-				<form name="loginform" action="register.do" method="POST">
+				<form name="registerForm" enctype="multipart/form-data" action="register.do" method="POST">
 					<p>
 						用户名*
 						<input type="text" name="username" id="textfield">
@@ -213,7 +209,7 @@ function clean(){
 						<input type="text" name="email" id="textfield7">
 					</p>
 					<p>
-						头像
+						头像<input name="fileContents" type="file"/>
 					</p>
 					<p>
 						个人描述
@@ -225,26 +221,15 @@ function clean(){
 						&nbsp;
 					</p>
 					<p>
-						<input class="button" type="submit" name="button2" id="button2"
-							value="提交">
-						<input class="button" type="button" name="button3" id="button3"
-							value="重置" onClick="clean()">
-						<input class="button" type="button" name="button4" id="button4"
-							value="取消"
-							onClick="location.href='<%=request.getContextPath()%>/index.jsp'">
+						<input class="button" type="submit" name="button21" id="button21" value="注册">
+						<input class="button" type="button" name="button3" id="button3"	value="重置" onClick="clean()">
+						<input class="button" type="button" name="button4" id="button4"	value="取消"	onClick="location.href='<%=request.getContextPath()%>/index.jsp'">
 					</p>
 				</form>
 				<!-- end #mainContent -->
 			</div>
 			<!-- 这个用于清除浮动的元素应当紧跟 #mainContent div 之后，以便强制 #container div 包含所有的子浮动 -->
 			<br class="clearfloat" />
-			<div id="footer">
-				<p>
-					脚注
-				</p>
-				<!-- end #footer -->
-			</div>
-			<!-- end #container -->
-		</div>
+			<%@ include file="/include/foot.jsp"%>
 	</body>
 </html>

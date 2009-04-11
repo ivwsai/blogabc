@@ -91,32 +91,38 @@ body  {
 /* 上面的专用 zoom 属性为 IE 提供避免错误所需的 hasLayout */
 </style>
 <![endif]-->
+<script language="javascript" src="../script/prototype.js"></script>
+<script language="javascript" src="../script/buffalo.js"></script>
+<script language="javascript">
+function clean(){
+	$("username").value='';
+	$("password").value='';
+}
+</script>
 </head>
 
 <body class="marsCss1">
 
 <div id="container">
-  <div id="header">
-<h1>blogabc</h1>
-  <!-- end #header --></div>
-  <div id="sidebar1">
-<h3>导航</h3>
-<p>返回首页</p>
-<p>查看专题</p>
-<p>查看热文</p>
-<p>查看新闻</p>
-<p>我的BLOG</p>
-<!-- end #sidebar1 --></div>
+  <%@ include file="/include/head.jsp"%>
+  <%@ include file="/include/left.jsp"%>
   <div id="mainContent">
 <h1>登录</h1>
 <p>&nbsp;</p>
  <form name="loginform" action="login.do" method="POST"> 
-    <p>用户名 <input type="text" name="username"></p>    
-    <br/>
-    <p>密码&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="password"></p>
+      <table width="466" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="86">用户名</td>
+          <td width="380"><input name="username" type="text" size="40"></td>
+        </tr>
+        <tr>
+          <td>密码</td>
+          <td width="380"><input name="password" type="password" size="40"></td>
+        </tr>
+      </table>  
     <p>
       <input class="button" type="submit" name="button2" id="button2" value="登录">
-      <input class="button" name="button4" id="button4" value="重置">
+      <input class="button" type="button" name="button3" id="button3"	value="重置" onClick="clean()">
     </p>
 </form>  
   <!-- end #mainContent --></div>
@@ -127,9 +133,7 @@ body  {
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
-  <div id="footer">
-<p>脚注</p>
-  <!-- end #footer --></div>
+  <%@ include file="/include/foot.jsp"%>
 <!-- end #container --></div>
 </body>
 </html>

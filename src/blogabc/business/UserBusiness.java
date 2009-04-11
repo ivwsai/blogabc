@@ -13,15 +13,17 @@ import java.util.ArrayList;
 import blogabc.dao.UserDAO;
 import blogabc.entity.User;
 import blogabc.tool.SafeUtility;
+import blogabc.tool.UploadUtility;
 
 public class UserBusiness {
 
-	public UserBusiness(){}
-	
+	public UserBusiness() {
+	}
+
 	private UserDAO userDao;
 
 	public UserBusiness(UserDAO userDao) {
-		this.userDao=userDao;
+		this.userDao = userDao;
 	}
 
 	public UserDAO getUserDao() {
@@ -34,52 +36,61 @@ public class UserBusiness {
 
 	/**
 	 * @param user
-	 * @return 
+	 * @return
 	 */
 	public Long register(User user) {
-		boolean isExist= isExist(user.getName());
-		if(isExist)
+		boolean isExist = isExist(user.getName());
+		if (isExist)
 			return -1l;
 		try {
-			String password=user.getPassword();
-			password=SafeUtility.encode(password);
+			String password = user.getPassword();
+			password = SafeUtility.encode(password);
 			user.setPassword(password);
-			
+
 			Long userId = (Long) getUserDao().add(user);
 			return userId;
 		} catch (Exception e) {
 			return -1l;
 		}
 	}
-	
-	public boolean isExist(String username){
-		boolean isExist= getUserDao().isExist(username);
+
+	public boolean isExist(String username) {
+		boolean isExist = getUserDao().isExist(username);
 		return isExist;
 	}
 
 	/**
 	 * @param userId
-	 * @param password 
-	 * @return 
+	 * @param password
+	 * @return
 	 */
 	public User login(String userId, String password) {
-		password=SafeUtility.encode(password);
+		password = SafeUtility.encode(password);
 		User user = getUserDao().get(userId, password);
 		return user;
 	}
 
 	/**
 	 * @param id
-	 * @return 
+	 * @return
 	 * @throws Exception
 	 */
-	public User getUser(Long id){
+	public User getUser(Long id) {
 		User user = getUserDao().find(id);
 		return user;
 	}
 
-	public ArrayList<User> getTop10Users(){
-		ArrayList<User> list= getUserDao().getTop10Users();
+	public ArrayList<User> getTop10Users() {
+		ArrayList<User> list = getUserDao().getTop10Users();
 		return list;
+	}
+
+	public boolean updatePhoto(Long id, byte[] fileContents, String path) {
+		try {
+			UploadUtility.updateFile(fileContents, path);
+		} catch (Exception e) {
+			return false;
+		}
+		return getUserDao().updatePhoto(id, path);
 	}
 }
