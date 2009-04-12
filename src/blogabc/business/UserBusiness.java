@@ -85,12 +85,12 @@ public class UserBusiness {
 		return list;
 	}
 
-	public boolean updatePhoto(Long id, byte[] fileContents, String path) {
+	public boolean updatePhoto(Long id, byte[] fileContents, String physicalPath, String logicalPath) {
 		try {
-			UploadUtility.updateFile(fileContents, path);
+			UploadUtility.updateFile(fileContents, physicalPath);
 		} catch (Exception e) {
 			return false;
 		}
-		return getUserDao().updatePhoto(id, path);
+		return getUserDao().updatePhoto(id, logicalPath);
 	}
 }

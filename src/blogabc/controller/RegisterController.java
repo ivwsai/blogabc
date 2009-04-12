@@ -1,6 +1,8 @@
 package blogabc.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
+
 import blogabc.business.UserBusiness;
 import blogabc.entity.User;
 import blogabc.form.RegisterForm;
@@ -17,6 +20,11 @@ import blogabc.form.RegisterForm;
 public class RegisterController extends SimpleFormController {
 	private UserBusiness userBusiness;
 	private String photoBaseUrl;
+	private String photoWebUrl;
+	
+	public void setPhotoWebUrl(String photoWebUrl) {
+		this.photoWebUrl = photoWebUrl;
+	}
 
 	public RegisterController() {
 		setCommandClass(RegisterForm.class);
@@ -55,19 +63,25 @@ public class RegisterController extends SimpleFormController {
 
 		if (id > 0) {
 			if (form.getFileContents().length > 0) {
-				if (getUserBusiness().updatePhoto(id, form.getFileContents(), photoBaseUrl + System.getProperty("file.separator")+user.getName().trim()+".jpg")) {
-					return new ModelAndView(getSuccessView(), "user", user.getName());
+				String p=photoBaseUrl + System.getProperty("file.separator")+user.getName().trim()+".jpg";
+				String c=photoWebUrl+"\\"+user.getName().trim()+".jpg";
+				if (getUserBusiness().updatePhoto(id, form.getFileContents(),p,c)) {
+					Map<String,String> model=new HashMap<String,String>();
+					model.put("user", user.getName());
+					String path=request.getRequestURL().toString();
+					path=path.substring(0,path.indexOf("user"));
+					path+=user.getPhotoUrl();
+					model.put("url", path);
+					return new ModelAndView(getSuccessView(),model);
 				} else {
 					return new ModelAndView(getFormView());
 				}
 			} else {
 				return new ModelAndView(getSuccessView(), "user", user.getName());
 			}
-
 		} else {
 			return new ModelAndView(getFormView());
 		}
-
 	}
 
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {

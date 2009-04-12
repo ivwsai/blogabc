@@ -20,8 +20,9 @@ public class UserTest extends TestCase {
 		UserDAO userDAO = new UserDAO();
 
 		User user = new User("han", "1");
+		user.setFirstName("陆");		
+		
 		UserBusiness ub = new UserBusiness(userDAO);
-
 		Long userId = ub.register(user);
 
 		user = ub.getUser(userId);

@@ -1,8 +1,9 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" errorPage="/error/error.jsp"%>
+
+
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>无标题文档</title>
 <style type="text/css"> 
 <!-- 
@@ -75,13 +76,8 @@ body  {
 	margin-right: 8px;
 }
 --> 
-</style><!--[if IE 5]>
-<style type="text/css"> 
-/* 将 IE 5* 的 css 方块模型修正放在这个条件注释中 */
-.thrColAbsHdr #sidebar1 { width: 180px; }
-.thrColAbsHdr #sidebar2 { width: 190px; }
 </style>
-<![endif]--></head>
+</head>
 
 <body class="thrColAbsHdr">
 
