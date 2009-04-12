@@ -86,10 +86,13 @@ public class UserDAO extends BaseDAO {
 		try {
 			String hql = "update User user set user.photoUrl= :path where user.id = :id";
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			Query q = session.createQuery(hql);
 			q.setString("path", path);
 			q.setLong("id", id);
 			q.executeUpdate();
+			tran.commit();
+			session.close();
 			return true;
 		} catch (Exception e) {
 			return false;
