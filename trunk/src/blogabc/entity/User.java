@@ -64,6 +64,10 @@ public class User implements Serializable{
 		this.point=point;
 	}
 
+	public User(Long id) {
+		this.id=id;
+	}
+
 	public String getPhone() {
 		return phone;
 	}

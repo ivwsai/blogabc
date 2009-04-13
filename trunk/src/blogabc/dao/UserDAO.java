@@ -32,6 +32,19 @@ public class UserDAO extends BaseDAO {
 		}
 	}
 
+	public boolean update(User user){
+		try {
+			session = getSession();
+			Transaction tran = session.beginTransaction();
+			session.update(user);
+			tran.commit();
+			session.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	public User find(Long id) {
 		try {
 			session = getSession();

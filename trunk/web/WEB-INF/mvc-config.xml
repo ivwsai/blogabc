@@ -16,6 +16,8 @@
 				<prop key="file/upload.do">uploadController</prop>
 				<prop key="user/register.do">registerController</prop>
 				<prop key="user/user.do">userController</prop>
+				<prop key="user/doedit.do">doEditUserController</prop>
+				<prop key="user/toedit.do">toEditUserController</prop>
 			</props>
 		</property>
 	</bean>
@@ -49,4 +51,18 @@
 		<property name="viewPage2" value="login" />
 	</bean>
 
+	<bean id="doEditUserController" class="blogabc.controller.DoEditUserController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="photoBaseUrl" value="F:\workspace\blogabc\web\upload"/>
+		<property name="photoWebUrl" value="upload"/>	
+		<property name="successView" value="userIndex" />
+		<property name="formView" value="editUser" />
+	</bean>
+	
+	<bean id="toEditUserController" class="blogabc.controller.ToEditUserController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="editUser" />
+		<property name="viewPage2" value="login" />
+	</bean>
+	
 </beans>
