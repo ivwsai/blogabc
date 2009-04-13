@@ -17,7 +17,7 @@ import blogabc.business.UserBusiness;
 import blogabc.entity.User;
 import blogabc.form.RegisterForm;
 
-public class RegisterController extends SimpleFormController {
+public class DoEditUserController extends SimpleFormController {
 	private UserBusiness userBusiness;
 	private String photoBaseUrl;
 	private String photoWebUrl;
@@ -26,7 +26,7 @@ public class RegisterController extends SimpleFormController {
 		this.photoWebUrl = photoWebUrl;
 	}
 
-	public RegisterController() {
+	public DoEditUserController() {
 		setCommandClass(RegisterForm.class);
 	}
 
@@ -40,31 +40,27 @@ public class RegisterController extends SimpleFormController {
 
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception {
 		RegisterForm form = (RegisterForm) command;
-		User user = new User();
-		// TODO validate
-		String password = form.getPassword();
+		Long id=(Long)request.getSession().getAttribute("userId");
+		User user = new User(id);
 
 		// TODO need to extract form2bean method
 		Date now = new Date();
-		user.setCreateTime(now);
 		user.setUpdateTime(now);
 		user.setDescription(form.getDescription());
 		user.setEmail(form.getEmail());
 		user.setFirstName(form.getFirstName());
 		user.setLastName(form.getLastName());
 		user.setName(form.getUsername());
-		user.setPassword(password);
+	
 		user.setPhone(form.getMobile());
-		user.setPoint(0);
 
-		Long id = getUserBusiness().register(user);
+		boolean isUpdate = getUserBusiness().update(user);
 
-		if (id > 0) {
-			request.getSession().setAttribute("userId", user.getId());
+		if (isUpdate) {
 			if (form.getFileContents().length > 0) {
 				String p=photoBaseUrl + System.getProperty("file.separator")+user.getName().trim()+".jpg";
 				String c=photoWebUrl+"\\"+user.getName().trim()+".jpg";
-				if (getUserBusiness().updatePhoto(id, form.getFileContents(),p,c)) {
+				if (getUserBusiness().updatePhoto(user.getId(), form.getFileContents(),p,c)) {
 					Map<String,String> model=new HashMap<String,String>();
 					model.put("user", user.getName());
 					String path=request.getRequestURL().toString();

@@ -53,6 +53,10 @@ public class UserBusiness {
 			return -1l;
 		}
 	}
+	
+	public boolean update(User user){
+		return getUserDao().update(user);
+	}
 
 	public boolean isExist(String username) {
 		boolean isExist = getUserDao().isExist(username);
