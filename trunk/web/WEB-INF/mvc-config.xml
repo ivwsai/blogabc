@@ -12,12 +12,16 @@
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
+			
+				<prop key="index.do">homeController</prop>
 				<prop key="user/login.do">loginController</prop>
+				<prop key="user/logout.do">logoutController</prop>
 				<prop key="file/upload.do">uploadController</prop>
 				<prop key="user/register.do">registerController</prop>
 				<prop key="user/user.do">userController</prop>
 				<prop key="user/doedit.do">doEditUserController</prop>
 				<prop key="user/toedit.do">toEditUserController</prop>
+				
 			</props>
 		</property>
 	</bean>
@@ -31,11 +35,22 @@
 		<property name="path" value="F:\workspace\blogabc\web\upload"/>
 	</bean>
 
+	<bean id="homeController" class="blogabc.controller.HomeController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="blogabcIndex" />
+	</bean>
+	
 	<bean id="loginController" class="blogabc.controller.LoginController">
 		<property name="userBusiness" ref="userBusiness" />
 		<property name="successView" value="userIndex" />
 		<property name="formView" value="login" />
 	</bean>
+	
+	<bean id="logoutController" class="blogabc.controller.LogoutController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="login" />
+	</bean>
+	
 	
 	<bean id="registerController" class="blogabc.controller.RegisterController">
 		<property name="userBusiness" ref="userBusiness" />

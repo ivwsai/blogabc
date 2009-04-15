@@ -16,7 +16,7 @@
   			<h1>修改用户信息</h1>
 				<p>&nbsp;</p>
 		<form name="registerForm" enctype="multipart/form-data" action="doedit.do" method="POST">
-					<p>用户名*<input type="text" name="username" id="textfield" disabled="true" value="${username}"></p>
+					<p>用户名*<input type="text" name="username" id="textfield" disabled="true" value="${user}"></p>
 					<p>
 						姓
 						<input name="lastName" type="text" id="textfield4" size="10" value="${lastName}">
@@ -32,8 +32,7 @@
 					<c:choose>
 					<c:when test="${url==null}">
 						<p align="left">
-							<img src="../image/part.jpg" alt="" width="160" height="160"
-								border="1">
+							<img src="../image/part.jpg" alt="" width="160" height="160" border="1">
 						</p>
 					</c:when>
 					<c:otherwise>
@@ -55,7 +54,7 @@
 						
 					</p>
 					<p>
-						<input class="button" type="submit" name="button21" id="button21" value="注册">
+						<input class="button" type="submit" name="button21" id="button21" value="更新">
 						<input class="button" type="button" name="button3" id="button3"	value="重置" onClick="clean()">
 						<input class="button" type="button" name="button4" id="button4"	value="取消"	onClick="location.href='<%=request.getContextPath()%>/index.jsp'">
 					</p>

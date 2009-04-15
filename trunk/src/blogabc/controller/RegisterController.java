@@ -1,7 +1,14 @@
+/**
+ * BLOGABC system 1.0
+ * 
+ * This is an open source system for studying spring framework and hibernate.
+ * You can use it anywhere and you can ask your question or update your good idea. 
+ * author: ericHan1979@gmail.com
+ * date: 2009-3-30
+ */
 package blogabc.controller;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,22 +70,17 @@ public class RegisterController extends SimpleFormController {
 
 		if (id > 0) {
 			request.getSession().setAttribute("userId", user.getId());
+			Map<String, String> model = ControllerHelp.user2model(request, user);			
 			if (form.getFileContents().length > 0) {
 				String p = photoBaseUrl + System.getProperty("file.separator") + user.getName().trim() + ".jpg";
 				String c = photoWebUrl + "\\" + user.getName().trim() + ".jpg";
 				if (getUserBusiness().updatePhoto(id, form.getFileContents(), p, c)) {
-					Map<String, String> model = new HashMap<String, String>();
-					model.put("user", user.getName());
-					String path = request.getRequestURL().toString();
-					path = path.substring(0, path.indexOf("user"));
-					path += user.getPhotoUrl();
-					model.put("url", path);
 					return new ModelAndView(getSuccessView(), model);
 				} else {
 					return new ModelAndView(getFormView());
 				}
 			} else {
-				return new ModelAndView(getSuccessView(), "user", user.getName());
+				return new ModelAndView(getSuccessView(), model);
 			}
 		} else {
 			return new ModelAndView(getFormView());

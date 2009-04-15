@@ -1,4 +1,14 @@
+/**
+ * BLOGABC system 1.0
+ * 
+ * This is an open source system for studying spring framework and hibernate.
+ * You can use it anywhere and you can ask your question or update your good idea. 
+ * author: ericHan1979@gmail.com
+ * date: 2009-3-30
+ */
 package blogabc.controller;
+
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +38,8 @@ public class LoginController extends SimpleFormController {
 
 		if (user != null) {
 			request.getSession().setAttribute("userId", user.getId());
-			return new ModelAndView(getSuccessView(), "user", user.getName());
+			Map<String, String> model = ControllerHelp.user2model(request, user);
+			return new ModelAndView(getSuccessView(), model);
 		} else {
 			return new ModelAndView(getFormView());
 		}
