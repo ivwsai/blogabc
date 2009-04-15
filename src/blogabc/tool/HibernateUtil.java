@@ -19,10 +19,10 @@ import blogabc.BlogabcApplication;
 
 public class HibernateUtil {
 	private SessionFactory sessionFactory;
-	
+
 	public HibernateUtil() {
 		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
-		File file = new File(rootPath+"/Hibernate.cfg.xml");
+		File file = new File(rootPath + "/Hibernate.cfg.xml");
 		try {
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		} catch (Exception e) {

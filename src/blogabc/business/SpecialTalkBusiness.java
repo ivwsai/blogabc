@@ -15,50 +15,53 @@ import blogabc.entity.SpecialTalk;
 import blogabc.home.BlogABCException;
 
 public class SpecialTalkBusiness {
-private SpecialTalkDAO SpecialTalkDao;
-	
+	private SpecialTalkDAO SpecialTalkDao;
+
 	public SpecialTalkDAO getSpecialTalkDao() {
 		return SpecialTalkDao;
 	}
-	
+
 	public void setAriticleDao(SpecialTalkDAO specialTalkDao) {
 		this.SpecialTalkDao = specialTalkDao;
 	}
-	
+
 	/**
-	 * »ñÈ¡×¨ÌâÁÐ±í
+	 * ï¿½ï¿½È¡×¨ï¿½ï¿½ï¿½Ð±ï¿½
+	 * 
 	 * @return
 	 */
-	public ArrayList<SpecialTalk> getSpecialTalks(){
-		return getSpecialTalkDao().getSpecialTalks(); 
-	}
-	
-	
-	/**
-	 * ·¢²¼×¨Ìâ
-	 * @param SpecialTalk
-	 * @return
-	 * @throws BlogABCException 
-	 */
-	public Long publishSpecialTalk(SpecialTalk specialTalk) throws BlogABCException{
-		return (Long)getSpecialTalkDao().add(specialTalk); 
+	public ArrayList<SpecialTalk> getSpecialTalks() {
+		return getSpecialTalkDao().getSpecialTalks();
 	}
 
 	/**
-	 * ÐÞ¸Ä×¨Ìâ
+	 * ï¿½ï¿½ï¿½ï¿½×¨ï¿½ï¿½
+	 * 
+	 * @param SpecialTalk
+	 * @return
+	 * @throws BlogABCException
+	 */
+	public Long publishSpecialTalk(SpecialTalk specialTalk) throws BlogABCException {
+		return (Long) getSpecialTalkDao().add(specialTalk);
+	}
+
+	/**
+	 * ï¿½Þ¸ï¿½×¨ï¿½ï¿½
+	 * 
 	 * @param SpecialTalk
 	 * @return
 	 */
-	public boolean modifySpecialTalk(SpecialTalk specialTalk){
+	public boolean modifySpecialTalk(SpecialTalk specialTalk) {
 		return getSpecialTalkDao().update(specialTalk);
 	}
-	
+
 	/**
-	 * É¾³ý×¨Ìâ
+	 * É¾ï¿½ï¿½×¨ï¿½ï¿½
+	 * 
 	 * @param SpecialTalk
 	 * @return
 	 */
-	public boolean removeSpecialTalk(SpecialTalk specialTalk){
+	public boolean removeSpecialTalk(SpecialTalk specialTalk) {
 		return getSpecialTalkDao().delete(specialTalk);
 	}
 }

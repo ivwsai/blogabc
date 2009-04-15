@@ -16,29 +16,33 @@ import blogabc.entity.Feedback;
 
 public class FeedbackBusiness {
 	private FeedbackDAO feedbackDao;
+
 	public FeedbackDAO getFeedbackDao() {
 		return feedbackDao;
 	}
+
 	public void setFeedbackDao(FeedbackDAO feedbackDao) {
 		this.feedbackDao = feedbackDao;
 	}
-	
+
 	/**
-	 * 提交回复
+	 * 锟结交锟截革拷
+	 * 
 	 * @param feedback
 	 * @return
 	 */
-	public Long commitFeedback(Feedback feedback){
-		return (Long)getFeedbackDao().add(feedback);
+	public Long commitFeedback(Feedback feedback) {
+		return (Long) getFeedbackDao().add(feedback);
 	}
-	
+
 	/**
-	 * 获取博文回复列表
+	 * 锟斤拷取锟斤拷锟侥回革拷锟叫憋拷
+	 * 
 	 * @param article
 	 * @return
 	 */
-	public ArrayList<Feedback> getArticleFeedback(Article article){
+	public ArrayList<Feedback> getArticleFeedback(Article article) {
 		return getFeedbackDao().findFeedbacks(article);
 	}
-	
+
 }

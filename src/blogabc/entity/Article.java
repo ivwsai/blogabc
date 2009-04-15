@@ -24,15 +24,21 @@ public class Article implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	private String title;
+
 	private String content;
+
 	private Date createTime;
+
 	private Date updateTime;
-	
+
 	private Long classifyId;
+
 	private Long userId;
 
 	private int up = 0;
+
 	private int down = 0;
 
 	public Article() {

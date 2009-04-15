@@ -16,7 +16,7 @@ import blogabc.entity.Collect;
 public class CollectionBusiness {
 
 	private CollectionDAO collectionDao;
-	
+
 	public CollectionDAO getCollectionDao() {
 		return collectionDao;
 	}
@@ -27,38 +27,42 @@ public class CollectionBusiness {
 
 	/**
 	 * ����ղ�
+	 * 
 	 * @param collect
 	 * @return
 	 */
-	public Long createCollection(Collect collect){
-		return (Long)getCollectionDao().add(collect);
+	public Long createCollection(Collect collect) {
+		return (Long) getCollectionDao().add(collect);
 	}
-	
+
 	/**
 	 * ��ȡ�û����ղ��б�
+	 * 
 	 * @param user
 	 * @return
 	 */
-	public ArrayList<Collect> getUserCollects(Long userId){
+	public ArrayList<Collect> getUserCollects(Long userId) {
 		return getCollectionDao().findCollects(userId);
-		
+
 	}
-	
+
 	/**
 	 * �޸��ղ�
+	 * 
 	 * @param collect
 	 * @return
 	 */
-	public boolean monifyCollection(Collect collect){
+	public boolean monifyCollection(Collect collect) {
 		return getCollectionDao().update(collect);
 	}
-	
+
 	/**
 	 * ɾ���ղ�
+	 * 
 	 * @param collect
 	 * @return
 	 */
-	public boolean removeCollection(Collect collect){
+	public boolean removeCollection(Collect collect) {
 		return getCollectionDao().delete(collect);
 	}
 }

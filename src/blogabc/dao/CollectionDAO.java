@@ -39,9 +39,9 @@ public class CollectionDAO extends BaseDAO {
 	}
 
 	public Collect find(Long id) {
-		return (Collect)find(Collect.class,id);
+		return (Collect) find(Collect.class, id);
 	}
-	
+
 	public boolean update(Collect collect) {
 		try {
 			session = getSession();

@@ -15,24 +15,24 @@ import blogabc.entity.News;
 
 public class NewsBusiness {
 	private NewsDAO newsDao;
-	
+
 	public NewsDAO getNewsDao() {
 		return newsDao;
 	}
-	
+
 	public void setNewsDao(NewsDAO newsDao) {
 		this.newsDao = newsDao;
 	}
-	
-	public Long commitNews(News news){
-		return (Long)getNewsDao().add(news);
+
+	public Long commitNews(News news) {
+		return (Long) getNewsDao().add(news);
 	}
-	
-	public ArrayList<News> getTop10News(){
+
+	public ArrayList<News> getTop10News() {
 		return getNewsDao().getTop10News();
 	}
-	
-	public boolean modifyNews(News news){
+
+	public boolean modifyNews(News news) {
 		return getNewsDao().update(news);
 	}
 }

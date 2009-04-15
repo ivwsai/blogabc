@@ -19,9 +19,11 @@ import blogabc.form.RegisterForm;
 
 public class DoEditUserController extends SimpleFormController {
 	private UserBusiness userBusiness;
+
 	private String photoBaseUrl;
+
 	private String photoWebUrl;
-	
+
 	public void setPhotoWebUrl(String photoWebUrl) {
 		this.photoWebUrl = photoWebUrl;
 	}
@@ -40,7 +42,7 @@ public class DoEditUserController extends SimpleFormController {
 
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception {
 		RegisterForm form = (RegisterForm) command;
-		Long id=(Long)request.getSession().getAttribute("userId");
+		Long id = (Long) request.getSession().getAttribute("userId");
 		User user = new User(id);
 
 		// TODO need to extract form2bean method
@@ -51,23 +53,23 @@ public class DoEditUserController extends SimpleFormController {
 		user.setFirstName(form.getFirstName());
 		user.setLastName(form.getLastName());
 		user.setName(form.getUsername());
-	
+
 		user.setPhone(form.getMobile());
 
 		boolean isUpdate = getUserBusiness().update(user);
 
 		if (isUpdate) {
 			if (form.getFileContents().length > 0) {
-				String p=photoBaseUrl + System.getProperty("file.separator")+user.getName().trim()+".jpg";
-				String c=photoWebUrl+"\\"+user.getName().trim()+".jpg";
-				if (getUserBusiness().updatePhoto(user.getId(), form.getFileContents(),p,c)) {
-					Map<String,String> model=new HashMap<String,String>();
+				String p = photoBaseUrl + System.getProperty("file.separator") + user.getName().trim() + ".jpg";
+				String c = photoWebUrl + "\\" + user.getName().trim() + ".jpg";
+				if (getUserBusiness().updatePhoto(user.getId(), form.getFileContents(), p, c)) {
+					Map<String, String> model = new HashMap<String, String>();
 					model.put("user", user.getName());
-					String path=request.getRequestURL().toString();
-					path=path.substring(0,path.indexOf("user"));
-					path+=user.getPhotoUrl();
+					String path = request.getRequestURL().toString();
+					path = path.substring(0, path.indexOf("user"));
+					path += user.getPhotoUrl();
 					model.put("url", path);
-					return new ModelAndView(getSuccessView(),model);
+					return new ModelAndView(getSuccessView(), model);
 				} else {
 					return new ModelAndView(getFormView());
 				}
@@ -83,7 +85,7 @@ public class DoEditUserController extends SimpleFormController {
 		super.initBinder(request, binder);
 		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
-	
+
 	public void setPhotoBaseUrl(String photoBaseUrl) {
 		this.photoBaseUrl = photoBaseUrl;
 	}

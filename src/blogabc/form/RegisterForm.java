@@ -2,13 +2,21 @@ package blogabc.form;
 
 public class RegisterForm {
 	private String username;
+
 	private String password;
+
 	private String password2;
+
 	private String lastName;
+
 	private String firstName;
+
 	private String mobile;
+
 	private String email;
+
 	private byte[] fileContents;
+
 	private String description;
 
 	public String getUsername() {

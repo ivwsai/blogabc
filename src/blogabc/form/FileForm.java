@@ -2,6 +2,7 @@ package blogabc.form;
 
 public class FileForm {
 	private String name;
+
 	private byte[] contents;
 
 	public void setName(String name) {

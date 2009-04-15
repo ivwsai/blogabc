@@ -12,10 +12,11 @@ package blogabc.home;
 
 public class BlogABCException extends Exception {
 	private static final long serialVersionUID = 6980782787786417235L;
-//	private Logger logger;
+
+	// private Logger logger;
 	public BlogABCException(String string) {
 		super(string);
-//		logger.error(string);
+		// logger.error(string);
 	}
 
 }

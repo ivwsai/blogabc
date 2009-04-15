@@ -22,7 +22,9 @@ import blogabc.entity.User;
 
 public class ToEditUserController implements Controller {
 	private UserBusiness userBusiness;
+
 	private String viewPage1;
+
 	private String viewPage2;
 
 	public void setViewPage1(String viewPage1) {
@@ -48,10 +50,10 @@ public class ToEditUserController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			Long id = Long.parseLong(request.getParameter("id"));
-			Long userId=(Long)request.getSession().getAttribute("userId");
-			if(id.compareTo(userId)==-1)
+			Long userId = (Long) request.getSession().getAttribute("userId");
+			if (id.compareTo(userId) == -1)
 				return new ModelAndView(viewPage2);
-			
+
 			User user = getUserBusiness().getUser(id);
 			Map<String, String> model = new HashMap<String, String>();
 			model.put("user", user.getName());
@@ -70,7 +72,7 @@ public class ToEditUserController implements Controller {
 			model.put("firstName", user.getFirstName());
 			String path = request.getRequestURL().toString();
 			path = path.substring(0, path.indexOf("user"));
-			path += user.getPhotoUrl();			
+			path += user.getPhotoUrl();
 			model.put("des", user.getDescription());
 
 			return new ModelAndView(viewPage1, model);

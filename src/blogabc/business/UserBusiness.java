@@ -53,8 +53,8 @@ public class UserBusiness {
 			return -1l;
 		}
 	}
-	
-	public boolean update(User user){
+
+	public boolean update(User user) {
 		return getUserDao().update(user);
 	}
 
