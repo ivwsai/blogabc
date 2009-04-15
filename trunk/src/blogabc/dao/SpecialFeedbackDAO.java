@@ -41,6 +41,6 @@ public class SpecialFeedbackDAO extends BaseDAO {
 	}
 
 	public SpecialFeedback find(Long id) {
-		return (SpecialFeedback)find(SpecialFeedback.class,id);
+		return (SpecialFeedback) find(SpecialFeedback.class, id);
 	}
 }

@@ -16,28 +16,32 @@ import blogabc.entity.SpecialTalk;
 
 public class SpecialFeedbackBusiness {
 	private SpecialFeedbackDAO specialFeedbackDao;
+
 	public SpecialFeedbackDAO getSpecialFeedbackDao() {
 		return specialFeedbackDao;
 	}
+
 	public void setSpecialFeedbackDao(SpecialFeedbackDAO specialFeedbackDao) {
 		this.specialFeedbackDao = specialFeedbackDao;
 	}
-	
+
 	/**
-	 * 提交回复
+	 * 锟结交锟截革拷
+	 * 
 	 * @param specialFeedback
 	 * @return
 	 */
-	public Long commitSpecialFeedback(SpecialFeedback specialFeedback){
-		return (Long)getSpecialFeedbackDao().add(specialFeedback);
+	public Long commitSpecialFeedback(SpecialFeedback specialFeedback) {
+		return (Long) getSpecialFeedbackDao().add(specialFeedback);
 	}
-	
+
 	/**
-	 * 获取博文回复列表
+	 * 锟斤拷取锟斤拷锟侥回革拷锟叫憋拷
+	 * 
 	 * @param article
 	 * @return
 	 */
-	public ArrayList<SpecialFeedback> getArticleSpecialFeedback(SpecialTalk specialTalk){
+	public ArrayList<SpecialFeedback> getArticleSpecialFeedback(SpecialTalk specialTalk) {
 		return getSpecialFeedbackDao().findSpecialFeedbacks(specialTalk);
 	}
 }

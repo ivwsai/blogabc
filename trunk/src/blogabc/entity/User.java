@@ -18,54 +18,66 @@ import javax.persistence.Id;
 
 /**
  * 用户信息类
+ * 
  * @author luh
- *
+ * 
  */
 @SuppressWarnings("serial")
 @Entity
-public class User implements Serializable{
-	
+public class User implements Serializable {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)   
-  	private Long id;	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
 	private String name;
+
 	private String password;
+
 	/*
 	 * 用户积分
 	 */
-	private int point;	
+	private int point;
+
 	private String firstName;
+
 	private String lastName;
+
 	private String phone;
+
 	private String email;
-		
+
 	/*
 	 * 用户头像照片地址
 	 */
-	private String photoUrl;	
+	private String photoUrl;
+
 	/*
 	 * 用户自我描述
 	 */
 	private String description;
+
 	private Date createTime;
+
 	private Date updateTime;
 
-	//没有默认构造子，报错：Javassist Enhancement failed: blogabc.entity.User
-	public User(){}
-	
-	public User(String userId, String password) {
-		this.name=userId;
-		this.password=password;
+	// 没有默认构造子，报错：Javassist Enhancement failed: blogabc.entity.User
+	public User() {
 	}
-	
-	public User(String userId, String password,int point) {
-		this.name=userId;
-		this.password=password;
-		this.point=point;
+
+	public User(String userId, String password) {
+		this.name = userId;
+		this.password = password;
+	}
+
+	public User(String userId, String password, int point) {
+		this.name = userId;
+		this.password = password;
+		this.point = point;
 	}
 
 	public User(Long id) {
-		this.id=id;
+		this.id = id;
 	}
 
 	public String getPhone() {
@@ -83,7 +95,7 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Date getCreateTime() {
 		return createTime;
 	}

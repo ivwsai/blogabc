@@ -28,9 +28,9 @@ public class SpecialTalkDAO extends BaseDAO {
 	}
 
 	public SpecialTalk find(Long id) {
-		return (SpecialTalk)find(SpecialTalk.class,id);
+		return (SpecialTalk) find(SpecialTalk.class, id);
 	}
-	
+
 	public Serializable add(SpecialTalk specialTalk) {
 		try {
 			session = getSession();
@@ -64,5 +64,4 @@ public class SpecialTalkDAO extends BaseDAO {
 		}
 	}
 
-	
 }

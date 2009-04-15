@@ -32,7 +32,7 @@ public class UserDAO extends BaseDAO {
 		}
 	}
 
-	public boolean update(User user){
+	public boolean update(User user) {
 		try {
 			session = getSession();
 			Transaction tran = session.beginTransaction();
@@ -44,7 +44,7 @@ public class UserDAO extends BaseDAO {
 			return false;
 		}
 	}
-	
+
 	public User find(Long id) {
 		try {
 			session = getSession();

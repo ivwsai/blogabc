@@ -17,31 +17,37 @@ import javax.persistence.Id;
 
 @SuppressWarnings("serial")
 @Entity
-public class Collect implements Serializable{
+public class Collect implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	private String name;
+
 	private String url;
-	
+
 	private Long userId;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getUrl() {
 		return url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
@@ -49,6 +55,7 @@ public class Collect implements Serializable{
 	public Long getUserId() {
 		return userId;
 	}
+
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}

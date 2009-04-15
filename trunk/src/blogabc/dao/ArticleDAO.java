@@ -15,7 +15,7 @@ import org.hibernate.Query;
 
 import blogabc.entity.Article;
 
-public class ArticleDAO  extends BaseDAO{
+public class ArticleDAO extends BaseDAO {
 
 	public Serializable add(Article article) {
 		try {
@@ -27,13 +27,13 @@ public class ArticleDAO  extends BaseDAO{
 			return null;
 		}
 	}
-	
+
 	public Article find(Long id) {
-		return (Article)find(Article.class,id);
+		return (Article) find(Article.class, id);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public ArrayList<Article> getUserArticles(Long userId){
+	public ArrayList<Article> getUserArticles(Long userId) {
 		String hql = "select article from Article article where article.userId= :userId";
 		session = getSession();
 		Query q = session.createQuery(hql);

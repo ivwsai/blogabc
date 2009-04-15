@@ -19,9 +19,11 @@ import blogabc.form.RegisterForm;
 
 public class RegisterController extends SimpleFormController {
 	private UserBusiness userBusiness;
+
 	private String photoBaseUrl;
+
 	private String photoWebUrl;
-	
+
 	public void setPhotoWebUrl(String photoWebUrl) {
 		this.photoWebUrl = photoWebUrl;
 	}
@@ -62,16 +64,16 @@ public class RegisterController extends SimpleFormController {
 		if (id > 0) {
 			request.getSession().setAttribute("userId", user.getId());
 			if (form.getFileContents().length > 0) {
-				String p=photoBaseUrl + System.getProperty("file.separator")+user.getName().trim()+".jpg";
-				String c=photoWebUrl+"\\"+user.getName().trim()+".jpg";
-				if (getUserBusiness().updatePhoto(id, form.getFileContents(),p,c)) {
-					Map<String,String> model=new HashMap<String,String>();
+				String p = photoBaseUrl + System.getProperty("file.separator") + user.getName().trim() + ".jpg";
+				String c = photoWebUrl + "\\" + user.getName().trim() + ".jpg";
+				if (getUserBusiness().updatePhoto(id, form.getFileContents(), p, c)) {
+					Map<String, String> model = new HashMap<String, String>();
 					model.put("user", user.getName());
-					String path=request.getRequestURL().toString();
-					path=path.substring(0,path.indexOf("user"));
-					path+=user.getPhotoUrl();
+					String path = request.getRequestURL().toString();
+					path = path.substring(0, path.indexOf("user"));
+					path += user.getPhotoUrl();
 					model.put("url", path);
-					return new ModelAndView(getSuccessView(),model);
+					return new ModelAndView(getSuccessView(), model);
 				} else {
 					return new ModelAndView(getFormView());
 				}
@@ -87,7 +89,7 @@ public class RegisterController extends SimpleFormController {
 		super.initBinder(request, binder);
 		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
-	
+
 	public void setPhotoBaseUrl(String photoBaseUrl) {
 		this.photoBaseUrl = photoBaseUrl;
 	}

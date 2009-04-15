@@ -15,7 +15,7 @@ import blogabc.home.BlogABCException;
 public class ClassifyBusiness {
 
 	private ClassifyDAO classifyDao;
-	
+
 	public ClassifyDAO getClassifyDao() {
 		return classifyDao;
 	}
@@ -25,32 +25,35 @@ public class ClassifyBusiness {
 	}
 
 	/**
-	 * ´´½¨·ÖÀà
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * 
 	 * @param classify
 	 * @return
 	 * @throws BlogABCException
 	 */
-	public Long createClassify(Classify classify) throws BlogABCException{
-//		if(classify.getUser()==null)
-//			throw new BlogABCException("user cannot be null");
-		return (Long)getClassifyDao().add(classify); 
+	public Long createClassify(Classify classify) throws BlogABCException {
+		// if(classify.getUser()==null)
+		// throw new BlogABCException("user cannot be null");
+		return (Long) getClassifyDao().add(classify);
 	}
-	
+
 	/**
-	 * ÐÞ¸Ä·ÖÀà
+	 * ï¿½Þ¸Ä·ï¿½ï¿½ï¿½
+	 * 
 	 * @param classify
 	 * @return
 	 */
-	public boolean modifyClassify(Classify classify){
+	public boolean modifyClassify(Classify classify) {
 		return getClassifyDao().update(classify);
 	}
-	
+
 	/**
-	 * É¾³ý·ÖÀà
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * 
 	 * @param classify
 	 * @return
 	 */
-	public boolean removeClassify(Classify classify){
+	public boolean removeClassify(Classify classify) {
 		return getClassifyDao().delete(classify);
 	}
 

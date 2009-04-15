@@ -1,9 +1,9 @@
 package blogabc.tool;
 
 public class CBRTEUtil {
-	
-	//rte1 = "here's the " + (char)13 + "\"preloaded <b>content</b>\"";
-	//rte1 = rteSafe(rte1);
+
+	// rte1 = "here's the " + (char)13 + "\"preloaded <b>content</b>\"";
+	// rte1 = rteSafe(rte1);
 	public static String rteSafe(String strText) {
 		// returns safe code for preloading in the RTE
 		String tmpString = strText;

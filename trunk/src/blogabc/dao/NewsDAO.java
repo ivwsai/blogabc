@@ -47,9 +47,9 @@ public class NewsDAO extends BaseDAO {
 			return false;
 		}
 	}
-	
+
 	public News find(Long id) {
-		return (News)find(News.class,id);
+		return (News) find(News.class, id);
 	}
 
 }

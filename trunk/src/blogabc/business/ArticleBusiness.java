@@ -17,62 +17,62 @@ import blogabc.home.BlogABCException;
 public class ArticleBusiness {
 
 	private ArticleDAO articleDao;
-	
+
 	public ArticleDAO getArticleDao() {
 		return articleDao;
 	}
-	
+
 	public void setAriticleDao(ArticleDAO articleDao) {
 		this.articleDao = articleDao;
 	}
-	
+
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	public ArrayList<Article> getUserArticles(Long userId){
-		return getArticleDao().getUserArticles(userId); 
+	public ArrayList<Article> getUserArticles(Long userId) {
+		return getArticleDao().getUserArticles(userId);
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public Article getArticle(Long id){
+	public Article getArticle(Long id) {
 		return getArticleDao().find(id);
 	}
-	
+
 	/**
 	 * 
 	 * @param article
 	 * @return
-	 * @throws BlogABCException 
+	 * @throws BlogABCException
 	 */
-	public Long publishArticle(Article article) throws BlogABCException{
-//		if(article.getUser()==null){
-//			throw new BlogABCException("user cannot be null");
-//		}
-		
-		return (Long)getArticleDao().add(article); 
+	public Long publishArticle(Article article) throws BlogABCException {
+		// if(article.getUser()==null){
+		// throw new BlogABCException("user cannot be null");
+		// }
+
+		return (Long) getArticleDao().add(article);
 	}
-	
+
 	/**
 	 * 
 	 * @param article
 	 * @return
 	 */
-	public boolean modifyArticle(Article article){
+	public boolean modifyArticle(Article article) {
 		return getArticleDao().update(article);
 	}
-	
+
 	/**
 	 * 
 	 * @param article
 	 * @return
 	 */
-	public boolean removeArticle(Article article){
+	public boolean removeArticle(Article article) {
 		return getArticleDao().delete(article);
 	}
 }

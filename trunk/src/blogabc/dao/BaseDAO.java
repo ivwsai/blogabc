@@ -15,6 +15,7 @@ import blogabc.tool.HibernateUtil;
 
 public class BaseDAO {
 	protected Session session;
+
 	private HibernateUtil util;
 
 	protected Session getSession() {

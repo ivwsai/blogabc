@@ -22,7 +22,9 @@ import blogabc.entity.User;
 
 public class UserController implements Controller {
 	private UserBusiness userBusiness;
+
 	private String viewPage1;
+
 	private String viewPage2;
 
 	public void setViewPage1(String viewPage1) {
@@ -62,7 +64,7 @@ public class UserController implements Controller {
 			model.put("name", user.getLastName() + " " + user.getFirstName());
 			model.put("mobile", user.getPhone());
 			model.put("email", user.getEmail());
-			model.put("point", user.getPoint()+"");
+			model.put("point", user.getPoint() + "");
 			model.put("des", user.getDescription());
 
 			return new ModelAndView(viewPage1, model);

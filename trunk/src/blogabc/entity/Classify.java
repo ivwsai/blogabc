@@ -17,12 +17,13 @@ import javax.persistence.Id;
 
 @SuppressWarnings("serial")
 @Entity
-public class Classify implements Serializable{
+public class Classify implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name="default";
-	
+
+	private String name = "default";
+
 	private Long userId;
 
 	public Long getId() {
