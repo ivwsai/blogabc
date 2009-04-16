@@ -80,6 +80,14 @@ body {
 	padding: 15px 10px 15px 20px;
 }
 
+.marsCss1 #sidebar2 {
+	float: right; /* 由于此元素是浮动的，因此必须指定宽度 */
+	width: 125px;
+	padding: 15px 10px 15px 20px;
+	height:500px;
+	text-align:right;
+}
+
 .marsCss1 #mainContent {
 	margin: 0 0 0 250px;
 	/* 此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此边距。 */

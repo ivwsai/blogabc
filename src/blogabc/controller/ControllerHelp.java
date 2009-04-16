@@ -28,7 +28,7 @@ public class ControllerHelp {
 			model.put("url", path);
 		}
 
-		model.put("userName", user.getLastName() + " " + user.getFirstName());
+		model.put("userName", user.getFirstName() + " " + user.getLastName());
 		model.put("mobile", user.getPhone());
 		model.put("email", user.getEmail());
 		model.put("lastName", user.getLastName());

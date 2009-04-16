@@ -1,10 +1,11 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" errorPage="/error/error.jsp"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"
+	errorPage="/error/error.jsp"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>_blogabc_注册</title>
 		<link href="../css/blog.css" rel="stylesheet" type="text/css" />
-		
+
 		<script language="javascript" src="../script/prototype.js"></script>
 		<script language="javascript" src="../script/buffalo.js"></script>
 
@@ -51,10 +52,12 @@
 				<h1>
 					新用户注册
 				</h1>
-				<p>&nbsp;
-					
+				<p>
+					&nbsp;
+
 				</p>
-				<form name="registerForm" enctype="multipart/form-data" action="register.do" method="POST">
+				<form name="registerForm" enctype="multipart/form-data"
+					action="register.do" method="POST">
 					<p>
 						用户名*
 						<input type="text" name="username" id="textfield">
@@ -82,7 +85,8 @@
 						<input type="text" name="email" id="textfield7">
 					</p>
 					<p>
-						头像<input name="fileContents" type="file"/>
+						头像
+						<input name="fileContents" type="file" />
 					</p>
 					<p>
 						个人描述
@@ -90,13 +94,18 @@
 					<p>
 						<textarea name="description" cols="55" rows="10" id="textfield8"></textarea>
 					</p>
-					<p>&nbsp;
-						
+					<p>
+						&nbsp;
+
 					</p>
 					<p>
-						<input class="button" type="submit" name="button21" id="button21" value="注册">
-						<input class="button" type="button" name="button3" id="button3"	value="重置" onClick="clean()">
-						<input class="button" type="button" name="button4" id="button4"	value="取消"	onClick="location.href='<%=request.getContextPath()%>/index.jsp'">
+						<input class="button" type="submit" name="button21" id="button21"
+							value="注册">
+						<input class="button" type="button" name="button3" id="button3"
+							value="重置" onClick="clean()">
+						<input class="button" type="button" name="button4" id="button4"
+							value="取消"
+							onClick="location.href='<%=request.getContextPath()%>/index.jsp'">
 					</p>
 				</form>
 				<!-- end #mainContent -->
