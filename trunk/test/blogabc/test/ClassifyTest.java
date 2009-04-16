@@ -14,7 +14,7 @@ import blogabc.dao.ClassifyDAO;
 import blogabc.entity.Classify;
 import blogabc.home.BlogABCException;
 
-public class ClassifyTestCase extends TestCase {
+public class ClassifyTest extends TestCase {
 
 	ClassifyBusiness cb;
 	ClassifyDAO classifyDao;
