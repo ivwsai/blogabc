@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		查看新闻
 	</p>
 	<p>
-		我的BLOG
+		<a href="<%=basePath%>/user/user.do">我的BLOG</a>
 	</p>
 	<!-- end #sidebar1 -->
 </div>

@@ -9,7 +9,9 @@
 package blogabc.business;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import blogabc.controller.blog.BlogModel;
 import blogabc.dao.ArticleDAO;
 import blogabc.entity.Article;
 import blogabc.home.BlogABCException;
@@ -22,17 +24,39 @@ public class ArticleBusiness {
 		return articleDao;
 	}
 
-	public void setAriticleDao(ArticleDAO articleDao) {
+	public void setArticleDao(ArticleDAO articleDao) {
 		this.articleDao = articleDao;
 	}
 
 	/**
+	 * get articles
 	 * 
-	 * @param user
+	 * @param userId
+	 * @param page
+	 * @param perPageCount
 	 * @return
 	 */
-	public ArrayList<Article> getUserArticles(Long userId) {
-		return getArticleDao().getUserArticles(userId);
+
+	public BlogModel getArticles(Long userId, int page, int perPageCount) {
+		ArrayList<Article> blogs = getArticleDao().getUserArticlesPerPage(userId, page, perPageCount);
+		int totalCount = getArticleDao().getTotalCount(userId);
+		int index = page;
+		int count = perPageCount;
+		BlogModel model = new BlogModel(userId, blogs, totalCount, index, count);
+		return model;
+	}
+
+	/**
+	 * get articles
+	 * 
+	 * @param userId
+	 * @param classifyId
+	 * @param page
+	 * @param perPageCount
+	 * @return
+	 */
+	public ArrayList<Article> getArticlesByClassify(Long userId, Long classifyId, int page, int perPageCount) {
+		return getArticleDao().getUserArticlesByClassifyPerPage(userId, classifyId, page, perPageCount);
 	}
 
 	/**
@@ -51,9 +75,13 @@ public class ArticleBusiness {
 	 * @throws BlogABCException
 	 */
 	public Long publishArticle(Article article) throws BlogABCException {
-		// if(article.getUser()==null){
-		// throw new BlogABCException("user cannot be null");
-		// }
+		if (article.getUserId() == null) {
+			throw new BlogABCException("user cannot be null");
+		}
+
+		Date d = new Date();
+		article.setCreateTime(d);
+		article.setUpdateTime(d);
 
 		return (Long) getArticleDao().add(article);
 	}

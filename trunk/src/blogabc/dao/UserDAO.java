@@ -75,7 +75,7 @@ public class UserDAO extends BaseDAO {
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<User> getTop10Users() {
-		String hql = "select user from User user order by user.point,user.createTime desc";
+		String hql = "select user from User user order by user.point desc";
 		session = getSession();
 		Query q = session.createQuery(hql);
 		// q.setFirstResult(10);
