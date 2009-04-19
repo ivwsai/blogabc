@@ -29,6 +29,7 @@ public class BaseDAO {
 	protected Object find(Class clazz, Long id) {
 		try {
 			session = getSession();
+			session.flush();
 			Object result = session.load(clazz, id);
 			Object object = result;
 			Hibernate.initialize(object);

@@ -6,8 +6,9 @@
  * author: ericHan1979@gmail.com
  * date: 2009-3-30
  */
-package blogabc.controller;
+package blogabc.controller.blog;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import blogabc.business.UserBusiness;
-import blogabc.entity.User;
+import blogabc.business.ArticleBusiness;
+import blogabc.entity.Article;
+import blogabc.tool.StringUtility;
 
-public class UserController implements Controller {
-	private UserBusiness userBusiness;
+public class BlogDetailController implements Controller {
+	private ArticleBusiness articleBusiness;
+
+	public ArticleBusiness getArticleBusiness() {
+		return articleBusiness;
+	}
+
+	public void setArticleBusiness(ArticleBusiness articleBusiness) {
+		this.articleBusiness = articleBusiness;
+	}
 
 	private String viewPage1;
 	private String viewPage2;
@@ -33,30 +43,16 @@ public class UserController implements Controller {
 		this.viewPage2 = viewPage2;
 	}
 
-	public Long register(User user) {
-		return getUserBusiness().register(user);
-	}
-
-	public UserBusiness getUserBusiness() {
-		return userBusiness;
-	}
-
-	public void setUserBusiness(UserBusiness userBusiness) {
-		this.userBusiness = userBusiness;
-	}
-
+	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
-			String sId = request.getParameter("id");
-			Long id;
-			if (sId == null) {
-				id = (Long) request.getSession().getAttribute("userId");
-			} else {
-				id = Long.parseLong(sId);
-			}
-
-			User user = getUserBusiness().getUser(id);
-			Map<String, String> model = ControllerHelp.user2model(request, user);
+			Long articleId = Long.parseLong(request.getParameter("id"));
+			Long userId = Long.parseLong(request.getParameter("userId"));
+			Article article = getArticleBusiness().getArticle(articleId);
+			article.setContent(StringUtility.setBR(article.getContent(),62));
+			Map model = new HashMap();
+			model.put("article", article);
+			model.put("userId", userId);
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);

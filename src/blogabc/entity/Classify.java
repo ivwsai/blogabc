@@ -20,7 +20,7 @@ import javax.persistence.Id;
 public class Classify implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long id=0l;
 
 	private String name = "default";
 

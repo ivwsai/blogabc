@@ -21,7 +21,10 @@
 				<prop key="user/user.do">userController</prop>
 				<prop key="user/doedit.do">doEditUserController</prop>
 				<prop key="user/toedit.do">toEditUserController</prop>
-				
+				<prop key="blog/blog.do">userBlogsController</prop>
+				<prop key="blog/changepage.do">changeBlogsPageController</prop>
+				<prop key="blog/detail.do">blogDetailController</prop>
+				<prop key="classify/classify.do">userClassifisController</prop>
 			</props>
 		</property>
 	</bean>
@@ -80,4 +83,29 @@
 		<property name="viewPage2" value="login" />
 	</bean>
 	
+	<bean id="userBlogsController" class="blogabc.controller.blog.UserBlogsController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="blogIndex" />
+		<property name="viewPage2" value="login" />
+	</bean>
+	
+	<bean id="changeBlogsPageController" class="blogabc.controller.blog.ChangeBlogsPageController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="blogIndex" />
+		<property name="viewPage2" value="login" />
+	</bean>
+	
+	<bean id="blogDetailController" class="blogabc.controller.blog.BlogDetailController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="viewPage1" value="blogDetail" />
+		<property name="viewPage2" value="login" />
+	</bean>
+	
+	<bean id="userClassifisController" class="blogabc.controller.classify.UserClassifisController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="viewPage1" value="blogDetail" />
+		<property name="viewPage2" value="login" />
+	</bean>
 </beans>

@@ -74,7 +74,7 @@ body {
 
 .marsCss1 #sidebar1 {
 	float: left; /* 由于此元素是浮动的，因此必须指定宽度 */
-	width: 200px;
+	width: 150px;
 	/* 在符合标准的浏览器中或者在 Internet Explorer 中的标准模式下，此 div 的实际宽度除了包括宽度外，还包括填充和边框 */
 	background: #EBEBEB; /* 将显示背景色，其宽度等于栏中内容的长度，*/
 	padding: 15px 10px 15px 20px;
@@ -88,9 +88,12 @@ body {
 	text-align:right;
 }
 
-.marsCss1 #mainContent {
-	margin: 0 0 0 250px;
-	/* 此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此边距。 */
+.marsCss1 #mainContent {	
+	margin: 0 0 0 200px;
+	/* 
+	此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。
+	如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此边距。 */
+	
 	padding: 0 20px; /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
 }
 

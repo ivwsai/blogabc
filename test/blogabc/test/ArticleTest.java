@@ -23,48 +23,24 @@ public class ArticleTest extends TestCase {
 	ArticleBusiness ab;
 	ArticleDAO articleDao;
 
-	public void testUserArticles() throws BlogABCException {
+	public void testUserArticlesPage() throws BlogABCException {
 		UserDAO userDAO = new UserDAO();
-		User user = new User("eric1110", "blogabc");
-		Long userId=(Long)userDAO.add(user);
-
+		User user = userDAO.get("eric", "1");
+		Long userId = user.getId();
 		articleDao = new ArticleDAO();
-		ab = new ArticleBusiness();
-		ab.setAriticleDao(articleDao);
-
-		for (int j = 0; j < 10; j++) {
-			Article article = new Article(userId);
-			article.setTitle("" + j);
-			ab.publishArticle(article);
-		}
-
-		ArrayList<Article> list=ab.getUserArticles(userId);
 		
-		assertNotNull(list);
+		System.out.println("total blog="+articleDao.getTotalCount(userId));
 		
+		ArrayList<Article> list = articleDao.getUserArticlesPerPage(userId,0,10);
 		for (int j = 0; j < list.size(); j++) {
 			Article article = list.get(j);
-			assertEquals(article.getTitle(), ""+j);
-		}		
-	}
-
-	public void testCRUD() throws BlogABCException {
-		articleDao = new ArticleDAO();
-		ab = new ArticleBusiness();
-		ab.setAriticleDao(articleDao);
-
-		Article article = new Article();
-
-		Long aId = ab.publishArticle(article);
-
-		assertNotNull(aId);
-
-		assertNotNull(article);
-
-		boolean isModified = ab.modifyArticle(article);
-		assertTrue(isModified);
-
-		boolean isRemoved = ab.removeArticle(article);
-		assertTrue(isRemoved);
+			System.out.println(article.getTitle());
+		}
+		
+		list = articleDao.getUserArticlesPerPage(userId,1,10);
+		for (int j = 0; j < list.size(); j++) {
+			Article article = list.get(j);
+			System.out.println(article.getTitle());
+		}
 	}
 }

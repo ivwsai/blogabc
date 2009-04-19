@@ -33,7 +33,7 @@ public class Article implements Serializable {
 
 	private Date updateTime;
 
-	private Long classifyId;
+	private Long classifyId=0l;
 
 	private Long userId;
 
