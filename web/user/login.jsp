@@ -14,11 +14,7 @@ function clean(){
 	$("password").value='';
 }
 </script>
-<style type="text/css"> 
-<!-- 
-.myInput{border:0 #FFFFFF; border-bottom:#000000 solid 1px;background-color:#D9E6D2; size:40; width:160} 
---> 
-</style> 
+
 </head>
 
 	<body class="marsCss1">
@@ -33,7 +29,7 @@ function clean(){
 				<p>&nbsp;
 					
 				</p>
-				<form name="loginform" action="login.do" method="POST">
+				<form name="loginform" action="<%=basePath%>/user/login.do" method="POST">
 					<table width="466" border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td width="86">

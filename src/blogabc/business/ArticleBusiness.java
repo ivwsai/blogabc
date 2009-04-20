@@ -55,8 +55,13 @@ public class ArticleBusiness {
 	 * @param perPageCount
 	 * @return
 	 */
-	public ArrayList<Article> getArticlesByClassify(Long userId, Long classifyId, int page, int perPageCount) {
-		return getArticleDao().getUserArticlesByClassifyPerPage(userId, classifyId, page, perPageCount);
+	public BlogModel getArticlesByClassify(Long userId, Long classifyId, int page, int perPageCount) {
+		ArrayList<Article> blogs = getArticleDao().getUserArticlesByClassifyPerPage(userId, classifyId, page, perPageCount);
+		int totalCount = getArticleDao().getTotalCount(userId);
+		int index = page;
+		int count = perPageCount;
+		BlogModel model = new BlogModel(userId, blogs, totalCount, index, count);
+		return model;
 	}
 
 	/**

@@ -21,7 +21,12 @@ import blogabc.business.ArticleBusiness;
 import blogabc.business.UserBusiness;
 import blogabc.entity.User;
 
-public class UserBlogsController implements Controller{
+/**
+ * 指定分类下用户博文列表处理类
+ * @author erichan1979@gmail.com
+ * Apr 20, 2009
+ */
+public class BelongBlogsController  implements Controller{
 	private ArticleBusiness articleBusiness;
 	private UserBusiness userBusiness;
 	public void setUserBusiness(UserBusiness userBusiness) {
@@ -50,13 +55,22 @@ public class UserBlogsController implements Controller{
 	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
-			Long userId= Long.parseLong(request.getParameter("id"));
-			BlogModel blogModel= getArticleBusiness().getArticles(userId, 0, 25);
+			Long cId= Long.parseLong(request.getParameter("id"));
+			Long userId= Long.parseLong(request.getParameter("userId"));
+			BlogModel blogModel= getArticleBusiness().getArticlesByClassify(userId,cId, 0, 25);
+			
 			User user = getUserBusiness().getUser(userId);
 			Map model=new HashMap();
 			model.put("user", user.getName());
-			model.put("userId", user.getId()+"");		
+			model.put("userId", user.getId()+"");
 			model.put("blogModel", blogModel);
+			Long sessionId = (Long) request.getSession().getAttribute("userId");
+			boolean isOwn;
+			if (sessionId == null) {
+				isOwn = false;
+			} else
+				isOwn = sessionId.equals(user.getId());
+			model.put("isOwn", isOwn + "");
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);

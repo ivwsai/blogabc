@@ -6,6 +6,7 @@
 
 	<bean id="userBusiness" class="blogabc.business.UserBusiness">
 		<property name="userDao" ref="userDao" />
+		<property name="classifyDao" ref="classifyDao" />
 	</bean>
 
 

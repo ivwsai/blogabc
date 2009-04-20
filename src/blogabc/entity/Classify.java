@@ -24,7 +24,14 @@ public class Classify implements Serializable {
 
 	private String name = "default";
 
-	private Long userId;
+	private Long userId=-1l;
+
+	public Classify(){}
+	
+	public Classify(Long userId, String name) {
+		this.userId=userId;
+		this.name=name;
+	}
 
 	public Long getId() {
 		return id;

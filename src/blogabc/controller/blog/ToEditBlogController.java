@@ -21,7 +21,7 @@ import blogabc.business.ArticleBusiness;
 import blogabc.business.UserBusiness;
 import blogabc.entity.User;
 
-public class UserBlogsController implements Controller{
+public class ToEditBlogController implements Controller{
 	private ArticleBusiness articleBusiness;
 	private UserBusiness userBusiness;
 	public void setUserBusiness(UserBusiness userBusiness) {
@@ -57,9 +57,17 @@ public class UserBlogsController implements Controller{
 			model.put("user", user.getName());
 			model.put("userId", user.getId()+"");		
 			model.put("blogModel", blogModel);
+			Long sessionId=(Long) request.getSession().getAttribute("userId");		
+			boolean isOwn;
+			if(sessionId==null){
+				isOwn=false;
+			}else
+				isOwn=sessionId.equals(user.getId());
+			model.put("isOwn", isOwn+"");
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);
 		}
 	}
 }
+

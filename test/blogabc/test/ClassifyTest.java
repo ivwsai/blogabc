@@ -22,7 +22,7 @@ public class ClassifyTest extends TestCase {
 	public void testCRUD() throws BlogABCException {
 		classifyDao = new ClassifyDAO();
 		cb=new ClassifyBusiness();
-		cb.setClassiyDao(classifyDao);
+		cb.setClassifyDao(classifyDao);
 		Classify classify = new Classify();
 		classify.setName("test");
 		

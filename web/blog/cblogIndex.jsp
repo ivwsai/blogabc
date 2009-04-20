@@ -67,17 +67,17 @@
 					<c:choose>
 						<c:when test="${blogModel.totalPage>blogModel.index+1}">
 							<a
-								href="<%=basePath%>/blog/changepage.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=prev">
+								href="<%=basePath%>/blog/changepage1.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=prev">
 								<<- </a>
 							<c:out value="${blogModel.index+1}" />/<c:out
 								value="${blogModel.totalPage}" />页 
 											<a
-								href="<%=basePath%>/blog/changepage.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=next">
+								href="<%=basePath%>/blog/changepage1.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=next">
 								->> </a>
 						</c:when>
 						<c:otherwise>
 							<a
-								href="<%=basePath%>/blog/changepage.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=prev">
+								href="<%=basePath%>/blog/changepage1.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=prev">
 								<<- </a>
 							<c:out value="${blogModel.index+1}" />/<c:out
 								value="${blogModel.totalPage}" />页

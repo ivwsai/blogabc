@@ -10,7 +10,9 @@ package blogabc.business;
 
 import java.util.ArrayList;
 
+import blogabc.dao.ClassifyDAO;
 import blogabc.dao.UserDAO;
+import blogabc.entity.Classify;
 import blogabc.entity.User;
 import blogabc.tool.SafeUtility;
 import blogabc.tool.UploadUtility;
@@ -21,6 +23,15 @@ public class UserBusiness {
 	}
 
 	private UserDAO userDao;
+	private ClassifyDAO classifyDao;
+	
+	public ClassifyDAO getClassifyDao() {
+		return classifyDao;
+	}
+
+	public void setClassifyDao(ClassifyDAO classifyDao) {
+		this.classifyDao = classifyDao;
+	}
 
 	public UserBusiness(UserDAO userDao) {
 		this.userDao = userDao;
@@ -46,8 +57,13 @@ public class UserBusiness {
 			String password = user.getPassword();
 			password = SafeUtility.encode(password);
 			user.setPassword(password);
-
 			Long userId = (Long) getUserDao().add(user);
+			
+			Classify classify=new Classify();
+			classify.setName("default");
+			classify.setUserId(userId);
+			
+			getClassifyDao().add(classify);
 			return userId;
 		} catch (Exception e) {
 			return -1l;
