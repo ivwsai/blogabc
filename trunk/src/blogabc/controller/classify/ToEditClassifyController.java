@@ -6,8 +6,9 @@
  * author: ericHan1979@gmail.com
  * date: 2009-3-30
  */
-package blogabc.controller.blog;
+package blogabc.controller.classify;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,49 +18,49 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import blogabc.business.ArticleBusiness;
+import blogabc.business.ClassifyBusiness;
 import blogabc.business.UserBusiness;
+import blogabc.entity.Classify;
 import blogabc.entity.User;
 
-public class UserBlogsController implements Controller{
-	private ArticleBusiness articleBusiness;
+public class ToEditClassifyController implements Controller{
+	private ClassifyBusiness classifyBusiness;
 	private UserBusiness userBusiness;
+
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
-	public UserBusiness getUserBusiness() {
-		return userBusiness;
-	}
-	public ArticleBusiness getArticleBusiness() {
-		return articleBusiness;
-	}
-
-	public void setArticleBusiness(ArticleBusiness articleBusiness) {
-		this.articleBusiness = articleBusiness;
-	}
 	
 	private String viewPage1;
-	private String viewPage2;
+
 	public void setViewPage1(String viewPage1) {
 		this.viewPage1 = viewPage1;
 	}
-	public void setViewPage2(String viewPage2) {
-		this.viewPage2 = viewPage2;
+
+	public void setClassifyBusiness(ClassifyBusiness classifyBusiness) {
+		this.classifyBusiness = classifyBusiness;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
-			Long userId= Long.parseLong(request.getParameter("id"));
-			BlogModel blogModel= getArticleBusiness().getArticles(userId, 0, 25);
-			User user = getUserBusiness().getUser(userId);
-			Map model=new HashMap();
+			Long userId = Long.parseLong(request.getParameter("id"));
+			ArrayList<Classify> classifies =classifyBusiness.getUserClassify(userId);
+			User user = userBusiness.getUser(userId);
+			Map model = new HashMap();
 			model.put("user", user.getName());
-			model.put("userId", user.getId()+"");		
-			model.put("blogModel", blogModel);
+			model.put("userName", user.getFirstName() + " " + user.getLastName());
+			model.put("userId", user.getId()+"");
+			model.put("classifies", classifies);
+			Long sessionId=(Long) request.getSession().getAttribute("userId");		
+			boolean isOwn;
+			if(sessionId==null){
+				isOwn=false;
+			}else
+				isOwn=sessionId.equals(user.getId());
+			model.put("isOwn", isOwn+"");
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
-			return new ModelAndView(viewPage2);
+			return new ModelAndView("user/login.do");
 		}
 	}
 }

@@ -11,8 +11,7 @@
 
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
-			<props>
-			
+			<props>			
 				<prop key="index.do">homeController</prop>
 				<prop key="user/login.do">loginController</prop>
 				<prop key="user/logout.do">logoutController</prop>
@@ -25,6 +24,14 @@
 				<prop key="blog/changepage.do">changeBlogsPageController</prop>
 				<prop key="blog/detail.do">blogDetailController</prop>
 				<prop key="classify/classify.do">userClassifisController</prop>
+				<prop key="blog/belongArticles.do">belongBlogsController</prop>
+				<prop key="blog/changepage1.do">changebelongBlogsPageController</prop>
+				<prop key="blog/editBlog.do">toEditBlogController</prop>
+				<prop key="classify/editClassify.do">toEditClassifyController</prop>
+				<prop key="classify/doEditClassfiy.do">doEditClassifyController</prop>
+				<prop key="classify/removeClassfiy.do">removeClassifyController</prop>
+				<prop key="classify/createClassfiy.do">addClassifyController</prop>
+          		<prop key="classify/finishEditCls.do">finishEditClsController</prop>
 			</props>
 		</property>
 	</bean>
@@ -45,8 +52,8 @@
 	
 	<bean id="loginController" class="blogabc.controller.LoginController">
 		<property name="userBusiness" ref="userBusiness" />
-		<property name="successView" value="userIndex" />
-		<property name="formView" value="login" />
+		<property name="successView" value="/user/userIndex" />
+		<property name="formView" value="/user/login" />
 	</bean>
 	
 	<bean id="logoutController" class="blogabc.controller.LogoutController">
@@ -80,32 +87,83 @@
 	<bean id="toEditUserController" class="blogabc.controller.ToEditUserController">
 		<property name="userBusiness" ref="userBusiness" />
 		<property name="viewPage1" value="editUser" />
-		<property name="viewPage2" value="login" />
 	</bean>
 	
 	<bean id="userBlogsController" class="blogabc.controller.blog.UserBlogsController">
 		<property name="articleBusiness" ref="articleBusiness" />
 		<property name="userBusiness" ref="userBusiness" />
 		<property name="viewPage1" value="blogIndex" />
-		<property name="viewPage2" value="login" />
 	</bean>
 	
 	<bean id="changeBlogsPageController" class="blogabc.controller.blog.ChangeBlogsPageController">
 		<property name="articleBusiness" ref="articleBusiness" />
 		<property name="userBusiness" ref="userBusiness" />
 		<property name="viewPage1" value="blogIndex" />
-		<property name="viewPage2" value="login" />
+		<property name="viewPage2" value="/user/login" />
 	</bean>
 	
 	<bean id="blogDetailController" class="blogabc.controller.blog.BlogDetailController">
 		<property name="articleBusiness" ref="articleBusiness" />
 		<property name="viewPage1" value="blogDetail" />
-		<property name="viewPage2" value="login" />
+		<property name="viewPage2" value="/user/login" />
 	</bean>
 	
-	<bean id="userClassifisController" class="blogabc.controller.classify.UserClassifisController">
-		<property name="classifyBusiness" ref="classifyBusiness" />
-		<property name="viewPage1" value="blogDetail" />
-		<property name="viewPage2" value="login" />
+	<bean id="belongBlogsController" class="blogabc.controller.blog.BelongBlogsController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="cblogIndex" />
+		<property name="viewPage2" value="/user/login" />
 	</bean>
+	
+	<bean id="changebelongBlogsPageController" class="blogabc.controller.blog.ChangebelongBlogsPageController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="blogIndex" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
+	<bean id="userClassifisController" class="blogabc.controller.classify.UserClassifiesController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="classifyList" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
+	<bean id="toEditBlogController" class="blogabc.controller.blog.ToEditBlogController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="editList" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
+	<bean id="toEditClassifyController" class="blogabc.controller.classify.ToEditClassifyController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="editList" />
+	</bean>
+
+	<bean id="doEditClassifyController" class="blogabc.controller.classify.DoEditClassifyController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="classify" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	<bean id="removeClassifyController" class="blogabc.controller.classify.RemoveClassifyController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="classifyList" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	<bean id="addClassifyController" class="blogabc.controller.classify.AddClassifyController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="classify" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	<bean id="finishEditClsController" class="blogabc.controller.classify.FinishEditClsController">
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="classifyList" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
 </beans>

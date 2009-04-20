@@ -23,7 +23,11 @@ public class ControllerHelp {
 		if (user.getPhotoUrl() == null) {
 		} else if (user.getPhotoUrl().length() > 0) {
 			String path = request.getRequestURL().toString();
+			try{
 			path = path.substring(0, path.indexOf("user"));
+			}catch(Exception e){
+				path = "http://localhost:8080/blogabc/";
+			}
 			path += user.getPhotoUrl();
 			model.put("url", path);
 		}
@@ -36,6 +40,14 @@ public class ControllerHelp {
 		model.put("firstName", user.getFirstName());
 		model.put("point", user.getPoint() + "");
 		model.put("des", user.getDescription());
+		
+		Long sessionId=(Long) request.getSession().getAttribute("userId");		
+		boolean isOwn;
+		if(sessionId==null){
+			isOwn=false;
+		}else
+			isOwn=sessionId.equals(user.getId());
+		model.put("isOwn", isOwn+"");
 		return model;
 	}
 }

@@ -20,7 +20,8 @@
 			<%@ include file="/include/head.jsp"%>
 			<%@ include file="/include/left.jsp"%>
 			<%@ include file="/include/right.jsp"%>
-			<table align="left" width="320" border="0" cellpadding="0"
+            <div id="mainContent">
+			<table align="left" border="0" cellpadding="0"
 				cellspacing="0" bordercolor="#006699">
 				<tr>
 					<td rowspan="7" align="left" valign="top">
@@ -95,10 +96,7 @@
 					</td>
 				</tr>
 			</table>
-		</div>
-
-
-		<!-- 这个用于清除浮动的元素应当紧跟 #mainContent div 之后，以便强制 #container div 包含所有的子浮动 -->
+            </div>
 		<br class="clearfloat" />
 		<%@ include file="/include/foot.jsp"%>
 		</div>

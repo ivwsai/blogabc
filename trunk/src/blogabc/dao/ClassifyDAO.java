@@ -9,8 +9,11 @@
 package blogabc.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import blogabc.entity.Classify;
 
@@ -19,7 +22,9 @@ public class ClassifyDAO extends BaseDAO {
 	public Serializable add(Classify classify) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			Serializable classId = session.save(classify);
+			tran.commit();
 			session.close();
 			return classId;
 		} catch (Exception e) {
@@ -30,7 +35,9 @@ public class ClassifyDAO extends BaseDAO {
 	public boolean update(Classify classify) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			session.update(classify);
+			tran.commit();
 			session.close();
 			return true;
 		} catch (Exception e) {
@@ -60,6 +67,17 @@ public class ClassifyDAO extends BaseDAO {
 		} catch (org.hibernate.ObjectNotFoundException e) {
 			return null;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Classify> getUserClassify(Long userId) {
+		String hql = "select classify from Classify classify where classify.userId= :userId order by classify.id desc";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		q.setParameter("userId", userId);
+		ArrayList<Classify> list = (ArrayList<Classify>) q.list();
+		session.close();
+		return list;
 	}
 
 }
