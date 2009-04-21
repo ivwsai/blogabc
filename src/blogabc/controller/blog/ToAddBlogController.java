@@ -21,12 +21,7 @@ import blogabc.business.ArticleBusiness;
 import blogabc.business.UserBusiness;
 import blogabc.entity.User;
 
-/**
- * 指定分类下用户博文列表处理类
- * 
- * @author erichan1979@gmail.com Apr 20, 2009
- */
-public class BelongBlogsController implements Controller {
+public class ToAddBlogController implements Controller {
 	private ArticleBusiness articleBusiness;
 	private UserBusiness userBusiness;
 
@@ -60,15 +55,13 @@ public class BelongBlogsController implements Controller {
 	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
-			Long cId = Long.parseLong(request.getParameter("id"));
-			Long userId = Long.parseLong(request.getParameter("userId"));
-			BlogModel blogModel = getArticleBusiness().getArticlesByClassify(userId, cId, 0, 25);
+			Long userId = Long.parseLong(request.getParameter("id"));
 
 			User user = getUserBusiness().getUser(userId);
 			Map model = new HashMap();
 			model.put("user", user.getName());
 			model.put("userId", user.getId() + "");
-			model.put("blogModel", blogModel);
+
 			Long sessionId = (Long) request.getSession().getAttribute("userId");
 			boolean isOwn;
 			if (sessionId == null) {
