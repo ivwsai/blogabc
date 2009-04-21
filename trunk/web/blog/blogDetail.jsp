@@ -15,28 +15,7 @@
 		<!--
 		.STYLE2 {font-size: xx-large}
 		-->
-        </style>
-        <script language="javascript" src="../script/prototype.js"></script>
-		<script language="javascript" src="../script/buffalo.js"></script>
-		
-  		<script language="javascript">
-			var END_POINT="<%=request.getContextPath()%>/bfapp";
-			var buffalo = new Buffalo(END_POINT);
-			
-			function updateUpDown(id,type) {						    
-			    buffalo.remoteCall("articleAjax.upOrdown",[id,type], function(reply) {
-			    	var r=reply.getResult();
-					if(type=="up"){			
-						$("up").title=r;
-						alert("getResult="+r+" up");
-					}	
-					else{
-			       		$("down").title=r;
-						alert("getResult="+r+" down");
-					}
-			    });
-			}	
-		</script>
+        </style>     
 		</head>
 
 	<body class="marsCss1">    			
@@ -44,17 +23,19 @@
 		<%@ include file="/include/head.jsp"%>
 		<%@ include file="/include/left.jsp"%>
         <div id="mainContent">
-        <table width="500" height="406" border="0" cellpadding="0" cellspacing="0">
-      <tr valign="top">
-                <td width="300" height="30"><strong>${article.title}</strong></td>
+        <table width="500" height="503" border="0" cellpadding="0" cellspacing="0" bordercolor="#006699">
+<tr valign="top">
+                <td width="300" height="30" valign="middle"><strong>${article.title}</strong></td>
         <td width="100"><fmt:formatDate value="${article.createTime}" pattern ="yyyy-MM-dd"/></td>
-                <td width="50"><input class="button" type="button" id="button" value="顶" onClick="updateUpDown(${article.id},'up')">
+                <td width="50"><input class="button" type="button" id="button" value="顶" 
+                onClick="location.href='<%=request.getContextPath()%>/blog/blogCount.do?action=up&&id=${article.id}'">
                 <label id="up" class="STYLE2">${article.up}</label>                </td>
-        		<td width="50"><input class="button" type="button" id="button" value="踩" onClick="updateUpDown(${article.id},'down')">
+        		<td width="50"><input class="button" type="button" id="button" value="踩" 
+        		onClick="location.href='<%=request.getContextPath()%>/blog/blogCount.do?action=down&&id=${article.id}'">
                 <label id="down" class="STYLE2">${article.down}</label>                </td>
               </tr>
               <tr>
-                <td height="230" colspan="4" valign="top">${article.content}</td>
+                <td height="327" colspan="4" valign="top">${article.content}</td>
 <!--<script language="JavaScript" type="text/javascript">
 //Usage: initRTE(imagesPath, includesPath, cssFile, genXHTML, encHTML)
 initRTE("../script/cbrte/images/", "../script/cbrte/", "", true);
@@ -68,7 +49,7 @@ rte1.build();
 				</td>-->
               </tr>
               <tr align="right" valign="bottom">
-                <td colspan="4"><a href="<%=basePath%>/blog/blog.do?id=${userId}">返回列表</a></td>
+                <td colspan="4" height="7"><a href="<%=basePath%>/blog/blog.do?id=${userId}">返回列表</a></td>
           </tr>
             </table>
         </div>

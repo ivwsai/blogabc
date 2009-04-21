@@ -51,7 +51,9 @@ public class ToEditBlogController implements Controller{
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			Long userId= Long.parseLong(request.getParameter("id"));
-			BlogModel blogModel= getArticleBusiness().getArticles(userId, 0, 25);
+
+			BlogModel blogModel=articleBusiness.getArticles(userId, 0, 25);
+			
 			User user = getUserBusiness().getUser(userId);
 			Map model=new HashMap();
 			model.put("user", user.getName());

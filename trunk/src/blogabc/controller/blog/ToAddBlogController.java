@@ -8,6 +8,7 @@
  */
 package blogabc.controller.blog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,13 +19,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import blogabc.business.ArticleBusiness;
+import blogabc.business.ClassifyBusiness;
 import blogabc.business.UserBusiness;
+import blogabc.entity.Classify;
 import blogabc.entity.User;
 
 public class ToAddBlogController implements Controller {
 	private ArticleBusiness articleBusiness;
 	private UserBusiness userBusiness;
-
+	private ClassifyBusiness classifyBusiness;
+	
 	public void setUserBusiness(UserBusiness userBusiness) {
 		this.userBusiness = userBusiness;
 	}
@@ -56,7 +60,7 @@ public class ToAddBlogController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			Long userId = Long.parseLong(request.getParameter("id"));
-
+			ArrayList<Classify> classifies=classifyBusiness.getUserClassify(userId);
 			User user = getUserBusiness().getUser(userId);
 			Map model = new HashMap();
 			model.put("user", user.getName());
@@ -69,9 +73,14 @@ public class ToAddBlogController implements Controller {
 			} else
 				isOwn = sessionId.equals(user.getId());
 			model.put("isOwn", isOwn + "");
+			model.put("classifies", classifies);
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);
 		}
+	}
+
+	public void setClassifyBusiness(ClassifyBusiness classifyBusiness) {
+		this.classifyBusiness = classifyBusiness;
 	}
 }

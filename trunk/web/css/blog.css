@@ -59,7 +59,13 @@ body {
 	border: 1px solid #000000;
 	text-align: left; /* 这将覆盖 body 元素上的“text-align: center”。 */
 }
-
+.marsCss1 #container11 {
+	width: 880px; /* 使用比最大宽度 (800px) 小 20px 的宽度可显示浏览器界面元素，并避免出现水平滚动条 */
+	background: #FFFFFF;
+	margin: 0 auto; /* 自动边距（与宽度一起）会将页面居中 */
+	border: 1px solid #000000;
+	text-align: left; /* 这将覆盖 body 元素上的“text-align: center”。 */
+}
 .marsCss1 #header {
 	background: #DDDDDD;
 	padding: 0 10px 0 20px;
@@ -87,7 +93,14 @@ body {
 	height:500px;
 	text-align:right;
 }
-
+.marsCss1 #mainContent11 {	
+	margin: 0 0 0 100px;
+	/* 
+	此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。
+	如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此边距。 */
+	
+	padding: 0 20px; /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
+}
 .marsCss1 #mainContent {	
 	margin: 0 0 0 200px;
 	/* 

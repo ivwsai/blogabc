@@ -108,4 +108,8 @@ public class ArticleBusiness {
 	public boolean removeArticle(Article article) {
 		return getArticleDao().delete(article);
 	}
+
+	public void upOrdown(Long articleId, String action) {
+		getArticleDao().upOrdown(articleId, action);
+	}
 }
