@@ -17,21 +17,31 @@
 	width:602px;
 	height:265px;
 	z-index:1;
-	left: 480px;
+	left: 280px;
 	top: 80px;
 }
+
+#apDiv4 {
+	position:absolute;
+	width:602px;
+	height:265px;
+	z-index:1;
+	left: 280px;
+	top: 360px;
+}
+
 #apDiv2 {
 	position:absolute;
-	left:480px;
-	top:382px;
+	left:280px;
+	top:650px;
 	width:255px;
 	height:320px;
 	z-index:2;
 }
 #apDiv3 {
 	position:absolute;
-	left:750px;
-	top:380px;
+	left:550px;
+	top:650px;
 	width:255px;
 	height:320px;
 	z-index:3;
@@ -48,7 +58,7 @@
 			</div>
 			<%@ include file="/include/left.jsp"%>
             
-			<div id="mainContent">
+<div id="mainContent">
         <div id="apDiv1">
           <table width="600" height="267" border="1" cellpadding="0" cellspacing="0" bordercolor="#0066CC">
             <tr>
@@ -58,7 +68,20 @@
               <td valign="top">专题内容：</td>
             </tr>
           </table>
-        </div>    
+        </div>
+  
+  <div id="apDiv4">
+            <table width="600" height="267" border="1" cellpadding="0" cellspacing="0" bordercolor="#0066CC">
+            <tr>
+              <td height="37">最新博文</td>
+            </tr>
+            <tr>
+              <td valign="top">
+              ×××××××××××××××××××
+			</td>
+            </tr>
+          </table>
+  </div>
   <div id="apDiv2">
                 热文榜
 <table width="240" border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFF99">
@@ -129,10 +152,18 @@
 				<p>&nbsp;
 					
 				</p>
-				<p>&nbsp;
-					
-				</p>
-			</div>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp; </p>
+</div>
 			<br class="clearfloat" />
 			<div id="footer">
 				<p align="right">
