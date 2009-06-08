@@ -9,7 +9,7 @@
 		<meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
         
-        <title>_blogabc_分类首页</title>
+        <title>_blogabc_博文管理</title>
 		<link href="../css/blog.css" rel="stylesheet" type="text/css" />
 	</head>
 
@@ -20,20 +20,22 @@
       		<%@ include file="/include/right.jsp"%>
       <div id="mainContent">
 		<table align="left" border="1" cellpadding="0" cellspacing="0" bordercolor="#006699">
-          <c:forEach items="${classifies}" var="classify" varStatus="status">
+          <c:forEach items="${blogModel.blogs}" var="article"	varStatus="status">
 			<tr>
 			  <td width="20"><c:out value="${status.index+1}" /></td>
-                <td width="280"><c:out value="${classify.name}"/></td>
-                <td width="40"><a href="<%=basePath%>/classify/doEditClassfiy.do?id=${classify.id}&&userId=${classify.userId}">编辑</a></td>
-              <td width="40"><a href="<%=basePath%>/classify/removeClassfiy.do?id=${classify.id}&&userId=${classify.userId}">删除</a></td>
+              <td width="150">
+					<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd" />
+			  </td>
+			<td width="150">
+				<a href="<%=basePath%>/blog/detail.do?id=${article.id}&&userId=${blogModel.belongUserId}">
+				 <c:out value="${article.title}" />
+				</a>
+			</td>
+			<td><a href="<%=basePath%>/blog/editArticle.do?id=${article.id}&&userId=${blogModel.belongUserId}">修改</a></td>
+			<td><a href="<%=basePath%>/blog/removeArticle.do?id=${article.id}&&userId=${blogModel.belongUserId}">删除</a></td>
 			</tr>
 		  </c:forEach>
-          <tr>
-	          <td colspan="4" align="right">
-	          <a href="<%=basePath%>/classify/createClassfiy.do?userId=${userId}">新建</a>
-	          </td>
-		 </tr>
-         </table>       
+          </table>       
          </div>
          <br/>
 			<!-- 这个用于清除浮动的元素应当紧跟 #mainContent div 之后，以便强制 #container div 包含所有的子浮动 -->

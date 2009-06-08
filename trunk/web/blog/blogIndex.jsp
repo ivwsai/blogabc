@@ -28,8 +28,7 @@
             <div id="mainContent">
 			<table align="left" border="0" cellpadding="0" cellspacing="0"
 				bordercolor="#006699">
-				<c:forEach items="${blogModel.blogs}" var="article"
-					varStatus="status">
+				<c:forEach items="${blogModel.blogs}" var="article" varStatus="status">
 					<tr>
 						<td width="20">
 							<c:out value="${status.index+1}" />
@@ -56,10 +55,7 @@
 						<c:when test="${blogModel.totalPage==0}">
 						</c:when>
 						<c:otherwise>
-									1/<c:out value="${blogModel.totalPage}" />页 
-									<a
-								href="<%=basePath%>/blog/changepage1.do?id=${blogModel.belongUserId}&&index=${blogModel.index}&&count=${blogModel.count}&&action=next">
-								->> </a>
+									1/<c:out value="${blogModel.totalPage}" />页					
 						</c:otherwise>
 					</c:choose>
 				</c:when>

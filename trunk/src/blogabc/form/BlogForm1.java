@@ -8,22 +8,30 @@
  */
 package blogabc.form;
 
-public class BlogForm {
+public class BlogForm1 {
+	private Long articleId;
 	private Long userId;
-	private String title;
+	private String title1;
 	private Long classifyId;
 	private String content;
+	
+	public Long getArticleId() {
+		return articleId;
+	}
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
 	public Long getUserId() {
 		return userId;
 	}
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public String getTitle() {
-		return title;
+	public String getTitle1() {
+		return title1;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle1(String title1) {
+		this.title1 = title1;
 	}
 	public Long getClassifyId() {
 		return classifyId;
