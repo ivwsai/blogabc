@@ -35,6 +35,9 @@
           		<prop key="blog/addBlog.do">toAddBlogController</prop>
           		<prop key="blog/publish.do">publishBlogController</prop>
           		<prop key="blog/blogCount.do">blogCountController</prop>
+          		<prop key="blog/removeArticle.do">blogRemoveController</prop>
+          		<prop key="blog/editArticle.do">blogEditController</prop>
+          		<prop key="blog/editPublish.do">blogEditedController</prop>
 			</props>
 		</property>
 	</bean>
@@ -185,10 +188,32 @@
 		<property name="viewPage1" value="blogIndex" />
 		<property name="viewPage2" value="blog" />
 	</bean>
+	
 	<bean id="blogCountController" class="blogabc.controller.blog.BlogCountController">
 		<property name="articleBusiness" ref="articleBusiness" />
 		<property name="viewPage1" value="blogDetail" />
 		<property name="viewPage2" value="blog" />
+	</bean>
+	
+	<bean id="blogRemoveController" class="blogabc.controller.blog.RemoveArticleController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="editList" />
+		<property name="viewPage2" value="editList" />
+	</bean>
+	
+	<bean id="blogEditController" class="blogabc.controller.blog.EditArticleController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="classifyBusiness" ref="classifyBusiness" />
+		<property name="viewPage1" value="blogEdit" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
+	<bean id="blogEditedController" class="blogabc.controller.blog.BlogEditedController">
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="editList" />
+		<property name="viewPage2" value="editList" />
 	</bean>
 	
 </beans>

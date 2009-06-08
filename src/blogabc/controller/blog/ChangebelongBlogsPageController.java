@@ -57,15 +57,18 @@ public class ChangebelongBlogsPageController implements Controller {
 		try {
 			int index = Integer.parseInt(request.getParameter("index"));
 			int count = Integer.parseInt(request.getParameter("count"));
-			Long cId= Long.parseLong(request.getParameter("id"));
-			Long userId= Long.parseLong(request.getParameter("userId"));
+//			Long cId= Long.parseLong(request.getParameter("id"));
+			Long userId= Long.parseLong(request.getParameter("id"));
 			String action = request.getParameter("action");
 
 			BlogModel blogModel;
 			if (action.equals("prev"))
-				blogModel = getArticleBusiness().getArticlesByClassify(userId,cId, --index, count);
+//				blogModel = getArticleBusiness().getArticlesByClassify(userId,cId, --index, count);
+				blogModel = getArticleBusiness().getArticles(userId, --index, count);
+				
 			else if (action.equals("next"))
-				blogModel = getArticleBusiness().getArticlesByClassify(userId,cId, ++index, count);
+//				blogModel = getArticleBusiness().getArticlesByClassify(userId,cId, ++index, count);
+				blogModel = getArticleBusiness().getArticles(userId, ++index, count);
 			else
 				return new ModelAndView(viewPage2);
 

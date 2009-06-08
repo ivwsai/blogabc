@@ -1,30 +1,18 @@
-/**
- * BLOGABC system 1.0
- * 
- * This is an open source system for studying spring framework and hibernate.
- * You can use it anywhere and you can ask your question or update your good idea. 
- * author: ericHan1979@gmail.com
- * date: 2009-3-30
- */
-package blogabc.controller.classify;
+package blogabc.controller.blog;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
-import blogabc.business.ClassifyBusiness;
+import blogabc.business.ArticleBusiness;
 import blogabc.business.UserBusiness;
-import blogabc.entity.Classify;
+import blogabc.entity.Article;
 import blogabc.entity.User;
 
-public class RemoveClassifyController implements Controller {
-	private ClassifyBusiness classifyBusiness;
+public class RemoveArticleController  implements Controller {
+	private ArticleBusiness articleBusiness;
 	private UserBusiness userBusiness;
 
 	public void setUserBusiness(UserBusiness userBusiness) {
@@ -42,28 +30,33 @@ public class RemoveClassifyController implements Controller {
 		this.viewPage2 = viewPage2;
 	}
 
-	public void setClassifyBusiness(ClassifyBusiness classifyBusiness) {
-		this.classifyBusiness = classifyBusiness;
+	public void setArticleBusiness(ArticleBusiness articleBusiness) {
+		this.articleBusiness = articleBusiness;
 	}
 
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			String id = request.getParameter("id");
-			Long cId = Long.parseLong(id);
+			Long aId = Long.parseLong(id);
 			Long sessionId = (Long) request.getSession().getAttribute("userId");
 
-			Classify classify = classifyBusiness.getClassify(cId);
-			boolean isRemoved = classifyBusiness.removeClassify(classify);
+			Article article = articleBusiness.getArticle(aId);
+			boolean isRemoved = articleBusiness.removeArticle(article);
 
 			if(isRemoved){
-				User user = userBusiness.getUser(sessionId);
-				Map model = new HashMap();
+				BlogModel blogModel=articleBusiness.getArticles(sessionId, 0, 25);
+				
+				User user =userBusiness.getUser(sessionId);
+				Map model=new HashMap();
 				model.put("user", user.getName());
-				model.put("userName", user.getFirstName() + " " + user.getLastName());
-				model.put("userId", user.getId() + "");
-				ArrayList<Classify> classifies = classifyBusiness.getUserClassify(sessionId);
-				model.put("classifies", classifies);
-				model.put("isOwn", true + "");
+				model.put("userId", user.getId()+"");		
+				model.put("blogModel", blogModel);
+				boolean isOwn;
+				if(sessionId==null){
+					isOwn=false;
+				}else
+					isOwn=sessionId.equals(user.getId());
+				model.put("isOwn", isOwn+"");
 				return new ModelAndView(viewPage1, model);
 			}			
 

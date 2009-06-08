@@ -48,7 +48,9 @@ public class ClassifyDAO extends BaseDAO {
 	public boolean delete(Classify classify) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			session.delete(classify);
+			tran.commit();
 			session.close();
 			return true;
 		} catch (Exception e) {
