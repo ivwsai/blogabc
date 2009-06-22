@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import blogabc.entity.SpecialTalk;
 
@@ -34,7 +35,9 @@ public class SpecialTalkDAO extends BaseDAO {
 	public Serializable add(SpecialTalk specialTalk) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			Serializable specialTalkId = session.save(specialTalk);
+			tran.commit();
 			session.close();
 			return specialTalkId;
 		} catch (Exception e) {
@@ -45,7 +48,9 @@ public class SpecialTalkDAO extends BaseDAO {
 	public boolean update(SpecialTalk specialTalk) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			session.update(specialTalk);
+			tran.commit();
 			session.close();
 			return true;
 		} catch (Exception e) {
@@ -56,7 +61,9 @@ public class SpecialTalkDAO extends BaseDAO {
 	public boolean delete(SpecialTalk specialTalk) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			session.delete(specialTalk);
+			tran.commit();
 			session.close();
 			return true;
 		} catch (Exception e) {
@@ -64,4 +71,16 @@ public class SpecialTalkDAO extends BaseDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public SpecialTalk getLastTalk() {
+		String hql = "select specialTalk from SpecialTalk specialTalk order by specialTalk.id desc";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		q.setMaxResults(1);
+		ArrayList<SpecialTalk> list = (ArrayList<SpecialTalk>) q.list();
+		session.close();
+		if (null != list && list.size() > 0)
+			return list.get(0);
+		return null;
+	}
 }

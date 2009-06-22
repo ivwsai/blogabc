@@ -48,9 +48,11 @@ rte1.build();
 </script>                
 				</td>-->
             </tr>
+           <%if(null!=userId){ %> 
            <tr align="right" valign="bottom">
                 <td colspan="4" height="7"><a href="<%=basePath%>/blog/blog.do?id=${userId}">返回列表</a></td>
          	</tr>
+         	<%} %>
             </table>
         </div>
 		  <br class="clearfloat" />

@@ -113,4 +113,8 @@ public class UserBusiness {
 		}
 		return getUserDao().updatePhoto(id, logicalPath);
 	}
+
+	public boolean isSuper(Long sessionId) {
+		return getUserDao().isSuper(sessionId);
+	}
 }

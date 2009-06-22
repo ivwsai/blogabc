@@ -16,12 +16,19 @@ public class StringUtility {
 		int endIndex = defineLineLen;
 		int beginIndex = 0;
 		while (endIndex < content.length()) {
-			sf.append(content.substring(beginIndex, endIndex-1) + "<br/>");
+			sf.append(content.substring(beginIndex, endIndex - 1) + "<br/>");
 			beginIndex = endIndex;
 			endIndex += defineLineLen;
 		}
 		sf.append(content.substring(beginIndex, content.length()));
-		
+
 		return sf.toString();
+	}
+
+	public static String changeLength(String content,int len) {
+		if (content.length() < len) {
+			return content;
+		}
+		return content.substring(0, len-2) + "...";
 	}
 }

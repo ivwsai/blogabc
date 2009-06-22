@@ -15,14 +15,14 @@ import blogabc.entity.SpecialTalk;
 import blogabc.home.BlogABCException;
 
 public class SpecialTalkBusiness {
-	private SpecialTalkDAO SpecialTalkDao;
+	private SpecialTalkDAO specialTalkDao;
 
 	public SpecialTalkDAO getSpecialTalkDao() {
-		return SpecialTalkDao;
+		return specialTalkDao;
 	}
 
-	public void setAriticleDao(SpecialTalkDAO specialTalkDao) {
-		this.SpecialTalkDao = specialTalkDao;
+	public void setSpecialTalkDao(SpecialTalkDAO specialTalkDao) {
+		this.specialTalkDao = specialTalkDao;
 	}
 
 	/**
@@ -63,5 +63,13 @@ public class SpecialTalkBusiness {
 	 */
 	public boolean removeSpecialTalk(SpecialTalk specialTalk) {
 		return getSpecialTalkDao().delete(specialTalk);
+	}
+
+	public SpecialTalk getLastTalk() {
+		return getSpecialTalkDao().getLastTalk();
+	}
+
+	public SpecialTalk getSpecialTalk(Long talkId) {
+		return getSpecialTalkDao().find(talkId);
 	}
 }

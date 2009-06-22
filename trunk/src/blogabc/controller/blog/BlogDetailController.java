@@ -44,15 +44,20 @@ public class BlogDetailController implements Controller {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		try {
 			Long articleId = Long.parseLong(request.getParameter("id"));
-			Long userId = Long.parseLong(request.getParameter("userId"));
+			String user = request.getParameter("userId");
+
 			Article article = getArticleBusiness().getArticle(articleId);
-			article.setContent(StringUtility.setBR(article.getContent(),62));
+			article.setContent(StringUtility.setBR(article.getContent(), 62));
 			Map model = new HashMap();
 			model.put("article", article);
-			model.put("userId", userId);
+			if (null != user) {
+				Long userId = Long.parseLong(user);
+				model.put("userId", userId);
+			}
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);

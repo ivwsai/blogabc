@@ -41,13 +41,19 @@ public class ArticleDAO extends BaseDAO {
 			Article article=(Article) find(Article.class, id);
 			int up=article.getUp()+1;
 			article.setUp(up);
+			session = getSession();
+			Transaction tran = session.beginTransaction();
 			update(article);
+			tran.commit();
 			return up;
 		}else if(type.endsWith("down")){
 			Article article=(Article) find(Article.class, id);
 			int down=article.getDown()+1;
 			article.setDown(down);
+			session = getSession();
+			Transaction tran = session.beginTransaction();						
 			update(article);
+			tran.commit();
 			return down;
 		}else{
 			return -1;
@@ -129,5 +135,26 @@ public class ArticleDAO extends BaseDAO {
 			return false;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Article> getNewArticles() {
+		String hql = "select article from Article article order by article.createTime desc";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		q.setMaxResults(20);
+		ArrayList<Article> list = (ArrayList<Article>) q.list();
+		session.close();
+		return list;
+	}
+
+	public ArrayList<Article> getHotArticles() {
+		String hql = "select article from Article article order by article.up desc";
+		session = getSession();
+		Query q = session.createQuery(hql);
+		q.setMaxResults(20);
+		ArrayList<Article> list = (ArrayList<Article>) q.list();
+		session.close();
+		return list;
+	} 
 
 }

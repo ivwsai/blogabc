@@ -8,6 +8,7 @@ String basePath1 = request.getScheme()+"://"+request.getServerName()+":"+request
 <div id="sidebar2">
 <c:choose>
 <c:when test="${isOwn}">
+<p><a href="<%=basePath1%>/talk/toCreateTalk.do">发布专题</a></p>
 <p><a href="<%=basePath1%>/blog/addBlog.do?id=${userId}">发布博文</a></p>
 <p><a href="<%=basePath1%>/blog/editBlog.do?id=${userId}">博文管理</a></p>
 <p><a href="<%=basePath1%>/classify/editClassify.do?id=${userId}">分类管理</a></p>

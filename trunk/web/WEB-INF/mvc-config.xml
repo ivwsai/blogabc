@@ -38,6 +38,14 @@
           		<prop key="blog/removeArticle.do">blogRemoveController</prop>
           		<prop key="blog/editArticle.do">blogEditController</prop>
           		<prop key="blog/editPublish.do">blogEditedController</prop>
+          		
+          		<prop key="talk/toCreateTalk.do">totalkCreateController</prop>
+          		<prop key="talk/createTalk.do">talkCreateController</prop>
+          		<prop key="talk/talkList.do">talkListController</prop>
+          		<prop key="talk/detail.do">talkDetailController</prop>
+          		<prop key="talk/feedbackTalk.do">addFeedbackController</prop>
+          		<prop key="talk/addfeedbackTalk.do">addedFeedbackController</prop>
+          		
 			</props>
 		</property>
 	</bean>
@@ -53,6 +61,8 @@
 
 	<bean id="homeController" class="blogabc.controller.HomeController">
 		<property name="userBusiness" ref="userBusiness" />
+		<property name="articleBusiness" ref="articleBusiness" />
+		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
 		<property name="viewPage1" value="blogabcIndex" />
 	</bean>
 	
@@ -216,4 +226,40 @@
 		<property name="viewPage2" value="editList" />
 	</bean>
 	
+	<bean id="totalkCreateController" class="blogabc.controller.specialtalk.ToAddTalkController">
+		<property name="userBusiness" ref="userBusiness" />
+		<property name="viewPage1" value="create" />
+		<property name="viewPage2" value="/user/login" />
+	</bean>
+	
+	<bean id="talkCreateController" class="blogabc.controller.specialtalk.AddTalkController">
+		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
+		<property name="path" value="F:\workspace\blogabc\web\upload\talk"/>
+		<property name="viewPage1" value="talkList" />
+		<property name="viewPage2" value="/talk/createTalk" />
+    </bean>
+    
+    <bean id="talkListController" class="blogabc.controller.specialtalk.TalkListController">
+		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
+		<property name="viewPage1" value="talkList" />
+    </bean>
+
+    <bean id="talkDetailController" class="blogabc.controller.specialtalk.TalkDetailController">
+		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
+		<property name="specialFeedbackBusiness" ref="specialFeedbackBusiness" />
+		<property name="viewPage1" value="detail" />
+    </bean>
+    
+    <bean id="addFeedbackController" class="blogabc.controller.specialtalk.AddFeedbackController">
+		<property name="viewPage1" value="feedback" />
+		<property name="viewPage2" value="/user/login" />
+    </bean>
+    
+        <bean id="addedFeedbackController" class="blogabc.controller.specialtalk.AddedFeedbackController">
+		<property name="specialFeedbackBusiness" ref="specialFeedbackBusiness" />
+		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
+		<property name="viewPage1" value="detail" />
+		<property name="viewPage2" value="/user/login" />
+    </bean>
+    
 </beans>

@@ -12,16 +12,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 
 import blogabc.entity.SpecialFeedback;
-import blogabc.entity.SpecialTalk;
 
 public class SpecialFeedbackDAO extends BaseDAO {
 
 	public Serializable add(SpecialFeedback specialFeedback) {
 		try {
 			session = getSession();
+			Transaction tran = session.beginTransaction();
 			Serializable specialFeedbackId = session.save(specialFeedback);
+			tran.commit();
 			session.close();
 			return specialFeedbackId;
 		} catch (Exception e) {
@@ -30,11 +32,11 @@ public class SpecialFeedbackDAO extends BaseDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<SpecialFeedback> findSpecialFeedbacks(SpecialTalk specialTalk) {
-		String hql = "select specialFeedback from SpecialFeedback specialFeedback where specialFeedback.specialTalk= :specialTalk";
+	public ArrayList<SpecialFeedback> findSpecialFeedbacks(Long specialTalkId) {
+		String hql = "select specialFeedback from SpecialFeedback specialFeedback where specialFeedback.specialTalkId= :specialTalkId";
 		session = getSession();
 		Query q = session.createQuery(hql);
-		q.setParameter("specialTalk", specialTalk);
+		q.setParameter("specialTalkId", specialTalkId);
 		ArrayList<SpecialFeedback> list = (ArrayList<SpecialFeedback>) q.list();
 		session.close();
 		return list;
