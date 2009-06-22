@@ -112,4 +112,9 @@ public class UserDAO extends BaseDAO {
 		}
 	}
 
+	public boolean isSuper(Long sessionId) {
+		User user=find(sessionId);
+		return user.getName().equals("han");
+	}
+
 }

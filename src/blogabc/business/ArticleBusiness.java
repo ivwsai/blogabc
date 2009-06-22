@@ -112,4 +112,12 @@ public class ArticleBusiness {
 	public void upOrdown(Long articleId, String action) {
 		getArticleDao().upOrdown(articleId, action);
 	}
+	
+	public ArrayList<Article> getNewArticles(){
+		return getArticleDao().getNewArticles();
+	}
+
+	public ArrayList<Article> getHotArticles() {
+		return getArticleDao().getHotArticles();
+	}
 }

@@ -54,6 +54,7 @@ body {
 
 .marsCss1 #container {
 	width: 780px; /* 使用比最大宽度 (800px) 小 20px 的宽度可显示浏览器界面元素，并避免出现水平滚动条 */
+	height:1000px;
 	background: #FFFFFF;
 	margin: 0 auto; /* 自动边距（与宽度一起）会将页面居中 */
 	border: 1px solid #000000;
@@ -93,7 +94,7 @@ body {
 	height:500px;
 	text-align:right;
 }
-.marsCss1 #mainContent11 {	
+.marsCss1 #mainContent11 {
 	margin: 0 0 0 100px;
 	/* 
 	此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。

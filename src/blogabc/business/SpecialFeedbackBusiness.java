@@ -41,7 +41,7 @@ public class SpecialFeedbackBusiness {
 	 * @param article
 	 * @return
 	 */
-	public ArrayList<SpecialFeedback> getArticleSpecialFeedback(SpecialTalk specialTalk) {
-		return getSpecialFeedbackDao().findSpecialFeedbacks(specialTalk);
+	public ArrayList<SpecialFeedback> findSpecialFeedbacks(Long specialTalkId) {
+		return getSpecialFeedbackDao().findSpecialFeedbacks(specialTalkId);
 	}
 }

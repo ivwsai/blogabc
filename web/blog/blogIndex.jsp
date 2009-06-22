@@ -34,12 +34,10 @@
 							<c:out value="${status.index+1}" />
 						</td>
 						<td width="150">
-							<fmt:formatDate value="${article.createTime}"
-								pattern="yyyy-MM-dd" />
+							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd" />
 						</td>
 						<td width="150">
-							<a
-								href="<%=basePath%>/blog/detail.do?id=${article.id}&&userId=${blogModel.belongUserId}">
+							<a href="<%=basePath%>/blog/detail.do?id=${article.id}&&userId=${blogModel.belongUserId}">
 								<c:out value="${article.title}" />
 							</a>
 						</td>

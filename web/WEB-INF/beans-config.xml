@@ -3,47 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
   http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-
+	<bean id="specialTalkBusiness" class="blogabc.business.SpecialTalkBusiness">
+		<property name="specialTalkDao" ref="specialTalkDao" />
+	</bean>
+	
+	<bean id="specialFeedbackBusiness" class="blogabc.business.SpecialFeedbackBusiness">
+		<property name="specialFeedbackDao" ref="specialFeedbackDao" />
+	</bean>
+	
 	<bean id="userBusiness" class="blogabc.business.UserBusiness">
 		<property name="userDao" ref="userDao" />
 		<property name="classifyDao" ref="classifyDao" />
 	</bean>
-
 
 	<bean id="articleBusiness"
 		class="blogabc.business.ArticleBusiness">
 		<property name="articleDao" ref="articleDao" />
 	</bean>
 
-
 	<bean id="classifyBusiness"
 		class="blogabc.business.ClassifyBusiness">
 		<property name="classifyDao" ref="classifyDao" />
 	</bean>
 
-
-
-
-
-
 	<bean id="userDao" class="blogabc.dao.UserDAO" />
 	<bean id="articleDao" class="blogabc.dao.ArticleDAO" />
 	<bean id="classifyDao" class="blogabc.dao.ClassifyDAO" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<bean id="specialTalkDao" class="blogabc.dao.SpecialTalkDAO" />
+	<bean id="specialFeedbackDao" class="blogabc.dao.SpecialFeedbackDAO" />
 </beans>

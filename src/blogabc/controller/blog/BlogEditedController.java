@@ -57,6 +57,7 @@ public class BlogEditedController extends SimpleFormController {
 		setCommandClass(BlogForm1.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception {
 		try {
 			BlogForm1 form = (BlogForm1) command;

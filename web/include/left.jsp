@@ -38,13 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	%>
 	</p>
 	<p>
-		查看专题
-	</p>
-	<p>
-		查看热文
-	</p>
-	<p>
-		查看新闻
+		<a href="<%=basePath%>/talk/talkList.do">查看专题</a>
 	</p>
 	<p>
 		<a href="<%=basePath%>/user/user.do">我的BLOG</a>
