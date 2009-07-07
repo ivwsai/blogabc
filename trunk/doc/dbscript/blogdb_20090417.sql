@@ -1,11 +1,6 @@
-/*
-MySQL Data Transfer
-Source Host: localhost
-Source Database: blogdb
-Target Host: localhost
-Target Database: blogdb
-Date: 2009-4-17 1:10:25
-*/
+CREATE DATABASE `blogdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+use blogdb;
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
