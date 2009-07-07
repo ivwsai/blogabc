@@ -24,15 +24,24 @@ public class HibernateUtil {
 		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
 		File file = new File(rootPath + "/Hibernate.cfg.xml");
 		try {
+			System.out.println("[HibernateUtil-rootPath]:"+rootPath);
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		} catch (Exception e) {
 			String usrDir = System.getProperty("user.dir");
-			file = new File(usrDir + "/src/Hibernate.cfg.xml");
+			String path=usrDir + "/src/Hibernate.cfg.xml";
+			System.out.println("[HibernateUtil-userPath]:"+path);
+			file = new File(path);
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		}
 	}
 
 	public Session getSession() throws HibernateException {
 		return sessionFactory.openSession();
+	}	
+	  
+	public static void main(String[] s){
+		new HibernateUtil();
+		
 	}
 }
+//ALTER DATABASE `blogdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
