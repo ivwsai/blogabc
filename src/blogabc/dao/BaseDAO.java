@@ -10,8 +10,7 @@ package blogabc.dao;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-
-import blogabc.tool.HibernateUtil;
+import blogabc.dbconnect.HibernateUtil;
 
 public class BaseDAO {
 	protected Session session;

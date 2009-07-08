@@ -44,6 +44,7 @@
           		<prop key="talk/talkList.do">talkListController</prop>
           		<prop key="talk/detail.do">talkDetailController</prop>
           		<prop key="talk/feedbackTalk.do">addFeedbackController</prop>
+          		
           		<prop key="talk/addfeedbackTalk.do">addedFeedbackController</prop>
           		
 			</props>

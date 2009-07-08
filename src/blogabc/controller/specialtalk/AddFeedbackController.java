@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.Controller;
 public class AddFeedbackController implements Controller {
 	private String viewPage1;
 	private String viewPage2;
-	
 	public void setViewPage1(String viewPage1) {
 		this.viewPage1 = viewPage1;
 	}
@@ -26,7 +25,6 @@ public class AddFeedbackController implements Controller {
 		try {
 			Long sessionId = (Long) request.getSession().getAttribute("userId");
 			Long talkId=Long.parseLong(request.getParameter("tid"));
-			
 			Map model = new HashMap();		
 			model.put("userId", sessionId);
 			model.put("talkId", talkId);

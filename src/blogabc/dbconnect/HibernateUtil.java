@@ -6,25 +6,28 @@
  * author: ericHan1979@gmail.com
  * date: 2009-3-30
  */
-package blogabc.tool;
+package blogabc.dbconnect;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import blogabc.BlogabcApplication;
+import blogabc.entity.User;
 
 public class HibernateUtil {
 	private SessionFactory sessionFactory;
 
 	public HibernateUtil() {
 		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
-		File file = new File(rootPath+"Hibernate.cfg.xml");
+		File file = new File(rootPath + "/Hibernate.cfg.xml");
 		try {
-			System.out.println("[HibernateUtil-rootPath]:"+rootPath);
+			System.out.println("[HibernateUtil-rootPath]:"+rootPath + "/Hibernate.cfg.xml");
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 		} catch (Exception e) {
 			String usrDir = System.getProperty("user.dir");
@@ -39,9 +42,22 @@ public class HibernateUtil {
 		return sessionFactory.openSession();
 	}	
 	  
-	public static void main(String[] s){
-		new HibernateUtil();
+	@SuppressWarnings("unchecked")
+	public static void main(String[] ss){
+		HibernateUtil h=new HibernateUtil();
+		Session session=h.sessionFactory.openSession();
 		
+		String hql = "select user from User user";
+		Query q = session.createQuery(hql);
+		// q.setFirstResult(10);
+		q.setMaxResults(10);
+		ArrayList<User> list = (ArrayList<User>) q.list();
+		
+		System.out.println("print username:");
+		for (User user : list) {
+			System.out.println(user.getName());
+		}
+		
+		session.close();
 	}
 }
-//ALTER DATABASE `blogdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
