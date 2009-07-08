@@ -60,7 +60,7 @@ public class HomeController implements Controller {
 		model.put("newArticles", newArticles);
 		model.put("hotArticles",hotArticles);
 		model.put("lastTalk",lastTalk);
-		if(null!=lastTalk.getAttachment()){
+		if(null!=lastTalk && null!=lastTalk.getAttachment()){
 			String[] attachments=lastTalk.getAttachment().split(";");
 			model.put("attachments",attachments);
 		}

@@ -22,7 +22,7 @@ public class HibernateUtil {
 
 	public HibernateUtil() {
 		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
-		File file = new File(rootPath + "/Hibernate.cfg.xml");
+		File file = new File(rootPath+"Hibernate.cfg.xml");
 		try {
 			System.out.println("[HibernateUtil-rootPath]:"+rootPath);
 			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
