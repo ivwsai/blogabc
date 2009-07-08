@@ -54,8 +54,7 @@ public class TalkDetailController implements Controller {
 		return specialFeedbackBusiness;
 	}
 
-	public void setSpecialFeedbackBusiness(
-			SpecialFeedbackBusiness specialFeedbackBusiness) {
+	public void setSpecialFeedbackBusiness(SpecialFeedbackBusiness specialFeedbackBusiness) {
 		this.specialFeedbackBusiness = specialFeedbackBusiness;
 	}
 }

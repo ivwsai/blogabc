@@ -6,7 +6,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for article
 -- ----------------------------
-CREATE TABLE `article` (
+CREATE TABLE `Article` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `classifyId` bigint(20) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE `article` (
 -- ----------------------------
 -- Table structure for classify
 -- ----------------------------
-CREATE TABLE `classify` (
+CREATE TABLE `Classify` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `userId` bigint(20) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `classify` (
 -- ----------------------------
 -- Table structure for collect
 -- ----------------------------
-CREATE TABLE `collect` (
+CREATE TABLE `Collect` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `collect` (
 -- ----------------------------
 -- Table structure for feedback
 -- ----------------------------
-CREATE TABLE `feedback` (
+CREATE TABLE `Feedback` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `article` tinyblob,
   `content` varchar(255) DEFAULT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `feedback` (
 -- ----------------------------
 -- Table structure for news
 -- ----------------------------
-CREATE TABLE `news` (
+CREATE TABLE `News` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `content` varchar(255) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `news` (
 -- ----------------------------
 -- Table structure for specialfeedback
 -- ----------------------------
-CREATE TABLE `specialfeedback` (
+CREATE TABLE `Specialfeedback` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `content` varchar(255) DEFAULT NULL,
   `specialTalkId` bigint(20) DEFAULT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `specialfeedback` (
 -- ----------------------------
 -- Table structure for specialtalk
 -- ----------------------------
-CREATE TABLE `specialtalk` (
+CREATE TABLE `Specialtalk` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `attachment` varchar(255) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `specialtalk` (
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-CREATE TABLE `user` (
+CREATE TABLE `User` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `createTime` datetime DEFAULT NULL,
   `description` varchar(2000) DEFAULT NULL,

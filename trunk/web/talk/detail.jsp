@@ -21,7 +21,7 @@
 			<div id="mainContent11">
 <table>
  			<tr>
-              <td valign="top"><b>主讲</b></td>
+              <td valign="top"><b>发起人</b></td>
             </tr>
             <tr>
               <td><c:out value="${talk.persons}"/></td>
@@ -62,18 +62,15 @@
             </tr>
             <tr>
               <td>              
-              <c:forEach items="${feedbacks}" var="feedback" varStatus="status">
-				<c:out value="${feedback.content}"/>
-                -- <c:out value="${feedback.userId}"/>
-                <a href="<%=basePath%>/talk/feedbackTalk.do?id=${feedback.id}"><c:out value="${feedback.id}"/></a>
+              <c:forEach items="${feedbacks}" var="feedback" varStatus="status">				
+                   回复人：<c:out value="${feedback.userId}"/></br>
+                <c:out value="${feedback.content}"/></br></br>
               </c:forEach>              
               </td>
             </tr>
             <tr>
              <td>
-             <a href="<%=basePath%>/talk/feedbackTalk.do?tid=${talk.id}">
-             回复专题
-             </a>
+             <a href="<%=basePath%>/talk/feedbackTalk.do?tid=${talk.id}">回复专题</a>
              </td>
             </tr>
 </table>

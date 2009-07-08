@@ -1,5 +1,6 @@
 package blogabc.controller.specialtalk;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,24 +40,29 @@ public class AddedFeedbackController extends SimpleFormController {
 		return specialTalkBusiness;
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
-		try {
+		try {			
 			FeedBackForm form = (FeedBackForm) command;
 			SpecialFeedback sf = new SpecialFeedback();
 			sf.setContent(form.getContent());
-			sf.setSpecialTalkId(Long.parseLong(form.getTalkId()));
+			Long talkId=Long.parseLong(form.getTalkId());
+			sf.setSpecialTalkId(talkId);
 			
 			Long userId = (Long) request.getSession().getAttribute("userId");
 			sf.setUserId(userId);
 
 			getSpecialFeedbackBusiness().commitSpecialFeedback(sf);
 			
-			SpecialTalk talk=getSpecialTalkBusiness().getSpecialTalk(sf.getSpecialTalkId());
+			SpecialTalk talk=getSpecialTalkBusiness().getSpecialTalk(sf.getSpecialTalkId());			
+			ArrayList<SpecialFeedback> feedbacks= getSpecialFeedbackBusiness().findSpecialFeedbacks(talkId);
+						
 			Map model = new HashMap();		
 			model.put("talk", talk);
+			model.put("feedbacks", feedbacks);
 			
 			return new ModelAndView(viewPage1,model);
 		} catch (Exception e) {
