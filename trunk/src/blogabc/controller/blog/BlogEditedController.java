@@ -9,6 +9,7 @@
 package blogabc.controller.blog;
 
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -63,16 +64,27 @@ public class BlogEditedController extends SimpleFormController {
 			BlogForm1 form = (BlogForm1) command;
 			Long userId = form.getUserId();
 			String title = form.getTitle1();
-			String content = form.getContent();
+//			String content = form.getContent();
 			Long cId = form.getClassifyId();
 			Long articleId=form.getArticleId();
 			
 			Article article =  getArticleBusiness().getArticle(articleId);
 			article.setClassifyId(cId);
-			article.setContent(content);
 			article.setTitle(title);
 			Date date = new Date();
 			article.setUpdateTime(date);
+			
+			Enumeration<String> params = (Enumeration<String>) request.getParameterNames();
+			String parameter=null;
+			while(params.hasMoreElements()) {
+				parameter = params.nextElement();
+				if("Editor090711".equals(parameter)){
+					String content = request.getParameter(parameter);
+					article.setContent(content);
+					break;
+				}
+			}
+			
 			getArticleBusiness().modifyArticle(article);
 
 			BlogModel blogModel = getArticleBusiness().getArticles(userId, 0, 25);
@@ -89,6 +101,7 @@ public class BlogEditedController extends SimpleFormController {
 			}else
 				isOwn=sessionId.equals(user.getId());
 			model.put("isOwn", isOwn+"");
+			
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);

@@ -13,7 +13,7 @@ public class BlogForm1 {
 	private Long userId;
 	private String title1;
 	private Long classifyId;
-	private String content;
+//	private String content;
 	
 	public Long getArticleId() {
 		return articleId;
@@ -39,10 +39,10 @@ public class BlogForm1 {
 	public void setClassifyId(Long classifyId) {
 		this.classifyId = classifyId;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
+//	public String getContent() {
+//		return content;
+//	}
+//	public void setContent(String content) {
+//		this.content = content;
+//	}
 }

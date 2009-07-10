@@ -9,6 +9,7 @@
 package blogabc.controller.blog;
 
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,15 +44,25 @@ public class PublishBlogController extends SimpleFormController {
 
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception {
 		try {
+			Article article = new Article();
+			
 			BlogForm form = (BlogForm) command;
 			Long userId = form.getUserId();
-			String title = form.getTitle();
-			String content = form.getContent();
+			String title = form.getTitle();			
 			Long cId = form.getClassifyId();
-
-			Article article = new Article();
-			article.setClassifyId(cId);
-			article.setContent(content);
+			
+			Enumeration<String> params = (Enumeration<String>) request.getParameterNames();
+			String parameter=null;
+			while(params.hasMoreElements()) {
+				parameter = params.nextElement();
+				if("marsEditor".equals(parameter)){
+					String content = request.getParameter(parameter);
+					article.setContent(content);
+					break;
+				}
+			}
+						
+			article.setClassifyId(cId);			
 			article.setTitle(title);
 			article.setUserId(userId);
 			Date date = new Date();

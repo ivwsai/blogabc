@@ -12,7 +12,7 @@ public class BlogForm {
 	private Long userId;
 	private String title;
 	private Long classifyId;
-	private String content;
+//	private String content;
 	public Long getUserId() {
 		return userId;
 	}
@@ -31,10 +31,10 @@ public class BlogForm {
 	public void setClassifyId(Long classifyId) {
 		this.classifyId = classifyId;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
+//	public String getContent() {
+//		return content;
+//	}
+//	public void setContent(String content) {
+//		this.content = content;
+//	}
 }

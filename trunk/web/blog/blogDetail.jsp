@@ -36,17 +36,6 @@
             </tr>
             <tr>
                 <td height="327" colspan="4" valign="top">${article.content}</td>
-<!--<script language="JavaScript" type="text/javascript">
-//Usage: initRTE(imagesPath, includesPath, cssFile, genXHTML, encHTML)
-initRTE("../script/cbrte/images/", "../script/cbrte/", "", true);
-</script>
-<script language="JavaScript" type="text/javascript">
-var rte1 = new richTextEditor('rte1');
-rte1.html = '${article.content}';
-rte1.toggleSrc = false;
-rte1.build();
-</script>                
-				</td>-->
             </tr>
            <%if(null!=userId){ %> 
            <tr align="right" valign="bottom">
