@@ -11,6 +11,9 @@ package blogabc.tool;
 public class StringUtility {
 
 	public static String setBR(String content, int defineLineLen) {
+		if(null== content || content.length() ==0)
+			return "";
+		
 		StringBuffer sf = new StringBuffer();
 
 		int endIndex = defineLineLen;

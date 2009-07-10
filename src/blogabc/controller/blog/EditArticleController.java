@@ -54,11 +54,13 @@ public class EditArticleController implements Controller {
 			Long userId = Long.parseLong(request.getParameter("userId"));
 			Article article = getArticleBusiness().getArticle(articleId);
 			ArrayList<Classify> classifies=classifyBusiness.getUserClassify(userId);
-			article.setContent(StringUtility.setBR(article.getContent(),62));
+//			article.setContent(StringUtility.setBR(article.getContent(),62));
 			Map model = new HashMap();
 			model.put("article", article);
 			model.put("userId", userId);
 			model.put("classifies", classifies);
+			
+			request.getSession().setAttribute("X", article.getContent());
 			return new ModelAndView(viewPage1, model);
 		} catch (Exception e) {
 			return new ModelAndView(viewPage2);

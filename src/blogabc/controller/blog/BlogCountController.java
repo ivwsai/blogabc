@@ -56,7 +56,7 @@ public class BlogCountController implements Controller {
 				return new ModelAndView(viewPage2);
 			}
 			Article article = getArticleBusiness().getArticle(articleId);
-			article.setContent(StringUtility.setBR(article.getContent(), 62));
+//			article.setContent(StringUtility.setBR(article.getContent(), 62));
 			Map model = new HashMap();
 			model.put("article", article);
 			model.put("userId", userId);

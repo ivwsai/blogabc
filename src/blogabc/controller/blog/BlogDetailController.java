@@ -51,7 +51,7 @@ public class BlogDetailController implements Controller {
 			String user = request.getParameter("userId");
 
 			Article article = getArticleBusiness().getArticle(articleId);
-			article.setContent(StringUtility.setBR(article.getContent(), 62));
+//			article.setContent(StringUtility.setBR(article.getContent(), 62));
 			Map model = new HashMap();
 			model.put("article", article);
 			if (null != user) {

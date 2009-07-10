@@ -1,19 +1,25 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"	errorPage="/error/error.jsp"%>
+<%@ page language="java" pageEncoding="UTF-8" import="net.fckeditor.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.fckeditor.net" prefix="FCK" %>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
-		<script language="JavaScript" type="text/javascript"
-			src="../script/cbrte/html2xhtml.js"></script>
-		<script language="JavaScript" type="text/javascript"
-			src="../script/cbrte/richtext_compressed.js"></script>
 		<title>_blogabc_博文首页</title>
 		<link href="../css/blog.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript">
+			function FCKeditor_OnComplete(editorInstance) {
+				window.status = editorInstance.Description;
+			}
+		</script>
 	</head>
-
+	<%
+		FCKeditor fckEditor = new FCKeditor(request, "Editor090711");
+	%>
 	<body class="marsCss1">
 		<div id="container11">
 			<%@ include file="/include/head.jsp"%>
@@ -32,12 +38,17 @@
 						</c:forEach>
 					</select>
 					<br>
-					<textarea name="content" id="content" cols="80" rows="30">${article.content}</textarea>
+					<%					
+						fckEditor.setWidth("700");
+						fckEditor.setHeight("550");
+						String content=(String)request.getSession().getAttribute("X");
+						fckEditor.setValue(content);
+						out.println(fckEditor);
+						request.getSession().setAttribute("X", null);
+					%>
 					<br>
-					<input class="button" type="submit" name="button2" id="button2"
-						value="修改">
-					<input class="button" type="button" name="button3" id="button3"
-						value="取消">
+					<input class="button" type="submit" name="button2" id="button2" value="修改">
+					<input class="button" type="button" name="button3" id="button3" value="取消">
 				</form>
 			</div>
 			<br class="clearfloat" />

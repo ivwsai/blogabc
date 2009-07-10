@@ -28,6 +28,20 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<servlet>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<servlet-class>
+			net.fckeditor.connector.ConnectorServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<!-- Do not wrap this line otherwise Glassfish will fail to load this file -->
+		<url-pattern>/fckeditor/editor/filemanager/connectors/*</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
