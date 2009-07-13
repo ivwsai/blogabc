@@ -9,10 +9,10 @@ SET FOREIGN_KEY_CHECKS=0;
 CREATE TABLE `Article` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `classifyId` bigint(20) DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
+  `content` varchar(4000) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
   `down` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(1000) DEFAULT NULL,
   `up` int(11) NOT NULL,
   `updateTime` datetime DEFAULT NULL,
   `userId` bigint(20) DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `Collect` (
 CREATE TABLE `Feedback` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `article` tinyblob,
-  `content` varchar(255) DEFAULT NULL,
+  `content` varchar(4000) DEFAULT NULL,
   `userId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -56,9 +56,9 @@ CREATE TABLE `Feedback` (
 -- ----------------------------
 CREATE TABLE `News` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) DEFAULT NULL,
+  `content` varchar(4000) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(1000) DEFAULT NULL,
   `updateTime` datetime DEFAULT NULL,
   `userId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -69,7 +69,7 @@ CREATE TABLE `News` (
 -- ----------------------------
 CREATE TABLE `Specialfeedback` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) DEFAULT NULL,
+  `content` varchar(4000) DEFAULT NULL,
   `specialTalkId` bigint(20) DEFAULT NULL,
   `userId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -80,12 +80,12 @@ CREATE TABLE `Specialfeedback` (
 -- ----------------------------
 CREATE TABLE `Specialtalk` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `attachment` varchar(255) DEFAULT NULL,
+  `attachment` varchar(4000) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
-  `exercise` varchar(255) DEFAULT NULL,
-  `howto` varchar(255) DEFAULT NULL,
-  `introduction` varchar(255) DEFAULT NULL,
-  `persons` varchar(255) DEFAULT NULL,
+  `exercise` varchar(4000) DEFAULT NULL,
+  `howto` varchar(4000) DEFAULT NULL,
+  `introduction` varchar(4000) DEFAULT NULL,
+  `persons` varchar(4000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -95,7 +95,7 @@ CREATE TABLE `Specialtalk` (
 CREATE TABLE `User` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `createTime` datetime DEFAULT NULL,
-  `description` varchar(2000) DEFAULT NULL,
+  `description` varchar(4000) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
