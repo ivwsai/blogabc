@@ -15,7 +15,6 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/ejb3-persistence.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-annotations.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate-core.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/javassist.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/jta.jar"/>
@@ -43,5 +42,8 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/java-core-2.5-beta-1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-simple-1.5.8.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/proxool-0.9.1.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/proxool-cglib.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>
