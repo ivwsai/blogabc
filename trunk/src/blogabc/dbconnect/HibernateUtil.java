@@ -26,16 +26,8 @@ public class HibernateUtil {
 	public HibernateUtil() {
 		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
 		File file = new File(rootPath + "/Hibernate.cfg.xml");
-		try {
-			System.out.println("[HibernateUtil-rootPath]:"+rootPath + "/Hibernate.cfg.xml");
-			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
-		} catch (Exception e) {
-			String usrDir = System.getProperty("user.dir");
-			String path=usrDir + "/src/Hibernate.cfg.xml";
-			System.out.println("[HibernateUtil-userPath]:"+path);
-			file = new File(path);
-			sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
-		}
+		System.out.println("[HibernateUtil-rootPath]:" + rootPath + "/Hibernate.cfg.xml");
+		sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
 	}
 
 	public Session getSession() throws HibernateException {
