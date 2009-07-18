@@ -14,13 +14,9 @@ import blogabc.dbconnect.HibernateUtil;
 
 public class BaseDAO {
 	protected Session session;
-
-	private HibernateUtil util;
-
+	
 	protected Session getSession() {
-		if (util == null)
-			util = new HibernateUtil();
-		session = util.getSession();
+		session = HibernateUtil.getSession();
 		return session;
 	}
 
