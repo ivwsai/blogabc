@@ -41,19 +41,13 @@ public class ArticleDAO extends BaseDAO {
 			Article article=(Article) find(Article.class, id);
 			int up=article.getUp()+1;
 			article.setUp(up);
-			session = getSession();
-			Transaction tran = session.beginTransaction();
 			update(article);
-			tran.commit();
 			return up;
 		}else if(type.endsWith("down")){
 			Article article=(Article) find(Article.class, id);
 			int down=article.getDown()+1;
 			article.setDown(down);
-			session = getSession();
-			Transaction tran = session.beginTransaction();						
 			update(article);
-			tran.commit();
 			return down;
 		}else{
 			return -1;

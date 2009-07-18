@@ -1,0 +1,41 @@
+tomcat目录浏览/中文目录支持
+
+开启Tomcat的servlet访问
+
+tomcat6默认也没有开启servlet、禁止目录浏览。这需要去conf/下配置web.xml文件。
+修改listings为true即可以目录浏览，
+
+            <param-name>listings</param-name>
+            <param-value>true</param-value>
+            <!-- false disable listings -->
+            <!-- <param-value>false</param-value>-->          
+
+开启servlet直接访问功能，把这两段注释打开
+    <servlet>
+        <servlet-name>invoker</servlet-name>
+        <servlet-class>
+          org.apache.catalina.servlets.InvokerServlet
+        </servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+<servlet-mapping>
+        <servlet-name>invoker</servlet-name>
+        <url-pattern>/servlet/*</url-pattern>
+    </servlet-mapping>
+同时修改content.xml，修改<Context>，增加<Context privileged="true"> 。
+
+2 中文目录支持
+    修改server.xml,在<Connector port="8080" 增加URIEncoding
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" URIEncoding="UTF-8" />
+               
+
+这样就可以访问中文目录了，get也不用这种方式去转码了。
+new String(request.getParameter("UserName").getBytes("ISO-8859-1"),"gb2312");
+但由于默认字符集是iso8859-1，修改后会对全部部署造成影响。你也可以就某个项目需要支持中文目录时单独设置过滤器。

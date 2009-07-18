@@ -110,7 +110,14 @@ body {
 	
 	padding: 0 20px; /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
 }
-
+.marsCss1 #mainContent12 {
+	margin:0 auto;
+	/* 
+	此 div 元素的左边距会在页面的左下方创建栏 — 无论 sidebar1 div 中包含多少内容，都将保留栏空白。
+	如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此边距。 */
+	
+	padding: 0 50px; /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
+}
 .marsCss1 #footer {
 	padding: 0 10px 0 20px; /* 此填充会将它上面 div 中的所有元素左对齐。 */
 	background: #DDDDDD;
