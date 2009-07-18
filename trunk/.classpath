@@ -41,7 +41,6 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/imageinfo-1.9.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/java-core-2.5-beta-1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-simple-1.5.8.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/hibernate3.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/proxool-0.9.1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/proxool-cglib.jar"/>

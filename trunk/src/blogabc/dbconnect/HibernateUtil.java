@@ -8,48 +8,64 @@
  */
 package blogabc.dbconnect;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-
-import blogabc.BlogabcApplication;
-import blogabc.entity.User;
+import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-	private SessionFactory sessionFactory;
+	private static String CONFIG_FILE_LOCATION = "/Hibernate.cfg.xml";
+	private static final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
+	private static Configuration configuration = new AnnotationConfiguration();
+	private static org.hibernate.SessionFactory sessionFactory;
+	private static String configFile = CONFIG_FILE_LOCATION;
 
-	public HibernateUtil() {
-		String rootPath = BlogabcApplication.getInstance().getClassRootPath();
-		File file = new File(rootPath + "/Hibernate.cfg.xml");
-		System.out.println("[HibernateUtil-rootPath]:" + rootPath + "/Hibernate.cfg.xml");
-		sessionFactory = new AnnotationConfiguration().configure(file).buildSessionFactory();
+	private HibernateUtil() {
 	}
 
-	public Session getSession() throws HibernateException {
-		return sessionFactory.openSession();
-	}	
-	  
-	@SuppressWarnings("unchecked")
-	public static void main(String[] ss){
-		HibernateUtil h=new HibernateUtil();
-		Session session=h.sessionFactory.openSession();
-		
-		String hql = "select user from User user";
-		Query q = session.createQuery(hql);
-		// q.setFirstResult(10);
-		q.setMaxResults(10);
-		ArrayList<User> list = (ArrayList<User>) q.list();
-		
-		System.out.println("print username:");
-		for (User user : list) {
-			System.out.println(user.getName());
+	public static Session getSession() throws HibernateException {
+		Session session = (Session) threadLocal.get();
+
+		if (session == null || !session.isOpen()) {
+			if (sessionFactory == null) {
+				rebuildSessionFactory();
+			}
+			session = (sessionFactory != null)? sessionFactory.openSession() : null;
+			threadLocal.set(session);
 		}
-		
-		session.close();
+
+		return session;
+	}
+
+	public static void rebuildSessionFactory() {
+		try {
+			configuration.configure(configFile);
+			sessionFactory = configuration.buildSessionFactory();
+		} catch (Exception e) {
+			System.err.println("%%%% Error Creating SessionFactory %%%%");
+			e.printStackTrace();
+		}
+	}
+
+	public static void closeSession() throws HibernateException {
+		Session session = (Session) threadLocal.get();
+		threadLocal.set(null);
+
+		if (session != null) {
+			session.close();
+		}
+	}
+
+	public static org.hibernate.SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public static void setConfigFile(String configFile) {
+		HibernateUtil.configFile = configFile;
+		sessionFactory = null;
+	}
+
+	public static Configuration getConfiguration() {
+		return configuration;
 	}
 }
