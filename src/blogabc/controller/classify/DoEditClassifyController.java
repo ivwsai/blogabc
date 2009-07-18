@@ -45,6 +45,7 @@ public class DoEditClassifyController implements Controller {
 		this.classifyBusiness = classifyBusiness;
 	}
 
+	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			Long cId = Long.parseLong(request.getParameter("id"));

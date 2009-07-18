@@ -46,6 +46,7 @@ public class AddClassifyController implements Controller{
 		this.classifyBusiness = classifyBusiness;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			Long userId = Long.parseLong(request.getParameter("userId"));			

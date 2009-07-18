@@ -52,6 +52,7 @@ public class FinishEditClsController extends SimpleFormController {
 		this.classifyBusiness = classifyBusiness;
 	}
 
+	@SuppressWarnings("unchecked")
 	protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException errors) throws Exception {
 		try {
 			ClassifyForm form = (ClassifyForm) command;

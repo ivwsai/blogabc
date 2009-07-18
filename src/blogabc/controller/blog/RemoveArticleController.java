@@ -34,6 +34,7 @@ public class RemoveArticleController  implements Controller {
 		this.articleBusiness = articleBusiness;
 	}
 
+	@SuppressWarnings("unchecked")
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			String id = request.getParameter("id");
