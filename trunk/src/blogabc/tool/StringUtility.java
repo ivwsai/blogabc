@@ -29,7 +29,7 @@ public class StringUtility {
 	}
 
 	public static String changeLength(String content,int len) {
-		if (content.length() < len) {
+		if (null==content || content.length() < len) {
 			return content;
 		}
 		return content.substring(0, len-2) + "...";
