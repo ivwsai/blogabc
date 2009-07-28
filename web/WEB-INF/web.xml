@@ -7,6 +7,26 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 
+<context-param>
+  <param-name>webAppRootKey</param-name>
+  <param-value>webApp.root</param-value>
+ </context-param>
+
+  <context-param>
+  <param-name>log4jConfigLocation</param-name>
+  <param-value>/WEB-INF/log4j.properties</param-value>
+ </context-param>
+
+   <context-param>
+      <param-name>log4jRefreshInterval</param-name>
+      <param-value>600000</param-value>
+   </context-param>  
+    <listener>
+      <listener-class>
+        org.springframework.web.util.Log4jConfigListener
+      </listener-class>
+   </listener>
+
 	<servlet>
 		<servlet-name>bfapp</servlet-name>
 		<servlet-class>

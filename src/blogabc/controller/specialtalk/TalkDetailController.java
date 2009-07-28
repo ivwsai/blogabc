@@ -43,6 +43,11 @@ public class TalkDetailController implements Controller {
 		model.put("talk", talk);
 		model.put("feedbacks", feedbacks);
 		
+		if(null!=talk && null!=talk.getAttachment()){
+			String[] attachments=talk.getAttachment().split(";");
+			model.put("attachments",attachments);
+		}
+		
 		return new ModelAndView(viewPage1,model);
 	}
 

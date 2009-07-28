@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -26,6 +27,8 @@ import blogabc.entity.SpecialTalk;
 import blogabc.entity.User;
 
 public class HomeController implements Controller {
+	private static Logger logger = Logger.getLogger(HomeController.class);
+	
 	private UserBusiness userBusiness;
 	private ArticleBusiness articleBusiness;
 	private SpecialTalkBusiness specialTalkBusiness;
@@ -63,6 +66,8 @@ public class HomeController implements Controller {
 		if(null!=lastTalk && null!=lastTalk.getAttachment()){
 			String[] attachments=lastTalk.getAttachment().split(";");
 			model.put("attachments",attachments);
+			
+			logger.debug(attachments);
 		}
 		return new ModelAndView(viewPage1, model);
 	}

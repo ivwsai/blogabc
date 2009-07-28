@@ -3,12 +3,12 @@
 	<proxool>
 		<alias>xpool</alias>
 		<driver-url>
-			jdbc:mysql://localhost:3306/blogdb?characterEncoding=UTF-8
+			jdbc:mysql://192.168.225.162:3306/blogdb?characterEncoding=UTF-8
 		</driver-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<driver-properties>
 			<property name="user" value="root" />
-			<property name="password" value="root" />
+			<property name="password" value="" />
 		</driver-properties>
 
 		<house-keeping-sleep-time>10000</house-keeping-sleep-time>

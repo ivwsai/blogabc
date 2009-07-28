@@ -52,7 +52,7 @@
 	</bean>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="1000000" />
+		<property name="maxUploadSize" value="5000000" />
 	</bean>
 
 	<bean id="uploadController" class="blogabc.tool.UploadController">
@@ -235,7 +235,7 @@
 	
 	<bean id="talkCreateController" class="blogabc.controller.specialtalk.AddTalkController">
 		<property name="specialTalkBusiness" ref="specialTalkBusiness" />
-		<property name="path" value="F:\workspace\blogabc\web\upload\talk"/>
+		<property name="path" value="D:/blogabc/upload"/>
 		<property name="viewPage1" value="talkList" />
 		<property name="viewPage2" value="/talk/createTalk" />
     </bean>
