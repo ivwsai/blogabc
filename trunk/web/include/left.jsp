@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%
 		}
 	%>
-	</p>
+
 	<p>
 		<a href="<%=basePath%>/talk/talkList.do">查看专题</a>
 	</p>

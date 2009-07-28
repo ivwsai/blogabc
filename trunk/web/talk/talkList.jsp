@@ -39,10 +39,7 @@
               </tr>
               </c:forEach>
               </table>
-			</td>
-            </tr>
-           </table>
-	 		
+		
 			</div>
 			<br class="clearfloat" />
 			<%@ include file="/include/foot.jsp"%>

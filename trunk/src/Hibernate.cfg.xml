@@ -18,7 +18,7 @@
 		</property>
 		<property name="hibernate.proxool.pool_alias">xpool</property>
 		<property name="hibernate.proxool.xml">proxool.xml</property>
-		<property name="show_sql">true</property>
+		<property name="show_sql">false</property>
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
